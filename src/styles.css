@@ -23,26 +23,26 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-border: var(--border);
   --color-ring: var(--ring);
-  --font-display: "Bebas Neue", ui-sans-serif, sans-serif;
-  --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Abril Fatface", ui-serif, Georgia, serif;
+  --font-sans: "Cabin", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
   --radius: 0.25rem;
-  --background: oklch(0.16 0.006 265);
-  --foreground: oklch(0.96 0.006 90);
-  --card: oklch(0.21 0.008 265);
-  --card-foreground: oklch(0.96 0.006 90);
-  --primary: oklch(0.78 0.135 79);
-  --primary-foreground: oklch(0.17 0.01 60);
-  --secondary: oklch(0.26 0.008 265);
-  --secondary-foreground: oklch(0.96 0.006 90);
-  --muted: oklch(0.26 0.008 265);
-  --muted-foreground: oklch(0.72 0.012 265);
-  --accent: oklch(0.58 0.16 25);
-  --accent-foreground: oklch(0.98 0 0);
-  --border: oklch(1 0 0 / 12%);
-  --ring: oklch(0.78 0.135 79);
+  --background: #0a0a0a;
+  --foreground: #e5e5e5;
+  --card: #111111;
+  --card-foreground: #e5e5e5;
+  --primary: #d4af37;
+  --primary-foreground: #0a0a0a;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #e5e5e5;
+  --muted: #1a1a1a;
+  --muted-foreground: #a3a3a3;
+  --accent: #b8952e;
+  --accent-foreground: #0a0a0a;
+  --border: rgba(212, 175, 55, 0.2);
+  --ring: #d4af37;
 }
 
 @layer base {
@@ -58,14 +58,15 @@
 
   h1,
   h2,
-  h3 {
+  h3,
+  h4 {
     font-family: var(--font-display);
     letter-spacing: 0.02em;
   }
 }
 
 @utility text-gold-gradient {
-  background-image: linear-gradient(100deg, oklch(0.88 0.09 90), oklch(0.72 0.14 72));
+  background-image: linear-gradient(100deg, #f0d78c, #c9a84c);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -77,12 +78,15 @@
   border-radius: var(--radius-lg);
 }
 
-@utility pole-stripes {
-  background-image: repeating-linear-gradient(
-    45deg,
-    oklch(0.58 0.16 25) 0 8px,
-    oklch(0.98 0 0) 8px 16px,
-    oklch(0.52 0.13 250) 16px 24px,
-    oklch(0.98 0 0) 24px 32px
-  );
+@utility grain {
+  position: relative;
+}
+
+@utility grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }

@@ -46,41 +46,41 @@ const SERVICES = [
 function Index() {
   return (
     <main className="min-h-screen">
-      <header className="relative isolate overflow-hidden">
+      <header className="relative isolate flex min-h-[80vh] flex-col items-center justify-center overflow-hidden border-b border-primary/20 px-5 text-center">
         <img
           src={heroImg}
           alt="Εσωτερικό κλασικού κουρείου με φωτισμό και καρέκλα barber"
           width={1600}
           height={1000}
-          className="absolute inset-0 h-full w-full object-cover opacity-40"
+          className="absolute inset-0 h-full w-full object-cover opacity-25"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/80 to-background" />
-        <div className="pole-stripes absolute inset-x-0 top-0 h-1.5" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/90 to-background" />
+        <div className="grain absolute inset-0" />
 
-        <div className="relative mx-auto max-w-5xl px-5 pb-16 pt-20 text-center sm:pb-24 sm:pt-28">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-primary">
+        <div className="relative z-10 max-w-4xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">
             Est. Κόρινθος · Ελλάδα
           </p>
-          <h1 className="mt-5 text-5xl leading-[0.95] sm:text-7xl">
+          <h1 className="mt-6 text-5xl leading-[0.95] sm:text-7xl md:text-8xl">
             <span className="text-gold-gradient">Προκόπης Ντερτιλής</span>
             <span className="mt-2 block text-foreground">Barber Shop</span>
           </h1>
-          <p className="mx-auto mt-5 max-w-md text-base text-muted-foreground sm:text-lg">
+          <p className="mx-auto mt-6 max-w-md text-base text-muted-foreground sm:text-lg">
             Shear / Shave / Shine. Κλασική τεχνική κουρέα με σύγχρονο styling.
           </p>
 
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
               href="tel:+302741025156"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 font-semibold text-primary-foreground transition-transform hover:scale-[1.02] sm:w-auto"
+              className="inline-flex w-full items-center justify-center gap-2 bg-primary px-8 py-4 font-bold uppercase tracking-widest text-primary-foreground transition-colors hover:bg-accent sm:w-auto"
             >
-              <Phone className="size-4" /> Κλείσε ραντεβού · 2741 025156
+              <Phone className="size-4" /> Κλείσε ραντεβού
             </a>
             <a
               href="https://maps.google.com/?q=Κολιάτσου+35,+Κόρινθος+20131"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-border px-6 py-3 font-semibold text-foreground transition-colors hover:bg-secondary sm:w-auto"
+              className="inline-flex w-full items-center justify-center gap-2 border border-primary px-8 py-4 font-bold uppercase tracking-widest text-primary transition-colors hover:bg-primary/10 sm:w-auto"
             >
               <Navigation className="size-4" /> Οδηγίες
             </a>
@@ -98,59 +98,36 @@ function Index() {
         </div>
       </header>
 
-      <section className="mx-auto max-w-5xl px-5 py-16" aria-labelledby="services">
-        <h2 id="services" className="text-3xl sm:text-4xl">
+      <section className="mx-auto max-w-4xl px-5 py-24" aria-labelledby="services">
+        <h2 id="services" className="text-center text-4xl text-primary">
           Υπηρεσίες
         </h2>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-8">
           {SERVICES.map((s) => (
-            <article key={s.title} className="surface-card p-5">
-              <Scissors className="size-5 text-primary" />
-              <h3 className="mt-4 text-xl">{s.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
+            <article key={s.title} className="group flex items-start gap-4 border-b border-primary/20 pb-6">
+              <Scissors className="mt-1 size-5 shrink-0 text-primary" />
+              <div className="flex-1">
+                <h3 className="text-xl font-bold uppercase tracking-tight transition-colors group-hover:text-primary">
+                  {s.title}
+                </h3>
+                <p className="mt-1 text-sm text-muted-foreground">{s.desc}</p>
+              </div>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="hours">
-        <div className="grid gap-6 lg:grid-cols-2">
-          <div className="surface-card p-6">
-            <h2 id="hours" className="flex items-center gap-2 text-3xl">
-              <Clock className="size-6 text-primary" /> Ωράριο
-            </h2>
-            <dl className="mt-6 divide-y divide-border">
-              {HOURS.map((h) => (
-                <div key={h.day} className="flex items-start justify-between gap-4 py-3">
-                  <dt className="font-semibold">{h.day}</dt>
-                  <dd className="text-right text-sm text-muted-foreground">
-                    {h.slots.map((slot) => (
-                      <div key={slot}>{slot}</div>
-                    ))}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-            <p className="mt-4 text-xs text-muted-foreground">
-              Το ωράριο ίσως διαφέρει σε αργίες.
-            </p>
-          </div>
-
-          <div className="surface-card overflow-hidden">
-            <img
-              src={storefront.url}
-              alt="Η πρόσοψη του Barber Shop Προκόπης στην Κόρινθο"
-              loading="lazy"
-              className="h-56 w-full object-cover sm:h-72"
-            />
-            <div className="p-6">
-              <h2 className="flex items-center gap-2 text-3xl">
-                <MapPin className="size-6 text-primary" /> Πού θα μας βρεις
-              </h2>
-              <p className="mt-4 text-muted-foreground">Κολιάτσου 35, Κόρινθος 201 31</p>
+      <section className="border-y border-primary/20 bg-card">
+        <div className="mx-auto grid max-w-6xl md:grid-cols-2">
+          <div className="border-b border-primary/20 p-8 md:border-b-0 md:border-r md:p-16">
+            <div className="mb-12">
+              <h4 className="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary">
+                <MapPin className="size-4" /> Η Τοποθεσία
+              </h4>
+              <p className="text-2xl leading-relaxed">Κολιάτσου 35,<br />Κόρινθος 201 31</p>
               <a
                 href="tel:+302741025156"
-                className="mt-1 block font-semibold text-primary hover:underline"
+                className="mt-2 block text-xl font-semibold text-primary hover:underline"
               >
                 2741 025156
               </a>
@@ -158,16 +135,43 @@ function Index() {
                 href="https://www.instagram.com/prokopis_barber/"
                 target="_blank"
                 rel="noreferrer"
-                className="mt-4 inline-block text-sm text-muted-foreground hover:text-foreground"
+                className="mt-2 inline-block text-sm text-muted-foreground hover:text-foreground"
               >
                 @prokopis_barber στο Instagram
               </a>
             </div>
+            <div>
+              <h4 className="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary">
+                <Clock className="size-4" /> Ωράριο
+              </h4>
+              <dl className="space-y-2 text-lg">
+                {HOURS.map((h) => (
+                  <div key={h.day} className="flex justify-between">
+                    <dt>{h.day}</dt>
+                    <dd className={h.slots[0] === "Κλειστά" ? "text-muted-foreground" : ""}>
+                      {h.slots.join(" · ")}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-4 text-xs text-muted-foreground">
+                Το ωράριο ίσως διαφέρει σε αργίες.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative min-h-[400px] overflow-hidden bg-secondary md:min-h-full">
+            <img
+              src={storefront.url}
+              alt="Η πρόσοψη του Barber Shop Προκόπης στην Κόρινθο"
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover opacity-60 grayscale transition-opacity duration-700 hover:opacity-100 hover:grayscale-0"
+            />
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-5 py-8">
+      <section className="mx-auto max-w-6xl px-5 py-8">
         <div className="surface-card overflow-hidden">
           <iframe
             title="Χάρτης – Barber Shop Προκόπης, Κολιάτσου 35, Κόρινθος"
@@ -178,10 +182,9 @@ function Index() {
         </div>
       </section>
 
-      <footer className="mt-8 border-t border-border py-10 text-center text-sm text-muted-foreground">
-        <div className="pole-stripes mx-auto mb-6 h-1 w-24 rounded-full" />
+      <footer className="py-12 text-center text-xs uppercase tracking-widest text-muted-foreground">
         <p>Προκόπης Ντερτιλής Μ. Barber Shop · Κολιάτσου 35, Κόρινθος</p>
-        <p className="mt-1">Κουρείο · Ανδρικά κουρέματα &amp; styling</p>
+        <p className="mt-2">Κουρείο · Ανδρικά κουρέματα &amp; styling</p>
       </footer>
     </main>
   );
