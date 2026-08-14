@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Phone, MapPin, Star, Clock, Navigation, Scissors } from "lucide-react";
+import { Phone, MapPin, Star, Clock, Navigation, Scissors, MessageCircle, Instagram } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
 import storefront from "@/assets/storefront.webp.asset.json";
 
@@ -71,10 +71,10 @@ function Index() {
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href="tel:+302741025156"
+              href="#book"
               className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 font-semibold text-primary-foreground transition-transform hover:scale-[1.02] sm:w-auto"
             >
-              <Phone className="size-4" /> Κλείσε ραντεβού · 2741 025156
+              <MessageCircle className="size-4" /> Κλείσε ραντεβού
             </a>
             <a
               href="https://maps.google.com/?q=Κολιάτσου+35,+Κόρινθος+20131"
@@ -97,6 +97,70 @@ function Index() {
           </div>
         </div>
       </header>
+
+      <section className="mx-auto max-w-5xl px-5 py-10" aria-labelledby="book">
+        <h2 id="book" className="text-center text-3xl sm:text-4xl">
+          Κλείσε ραντεβού
+        </h2>
+        <p className="mx-auto mt-3 max-w-lg text-center text-sm text-muted-foreground sm:text-base">
+          Επίλεξε τον τρόπο που σου ταιριάζει — άμεσα, τηλεφωνικά ή μέσω Instagram.
+        </p>
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          <article className="surface-card flex flex-col items-center p-6 text-center">
+            <div className="flex size-12 items-center justify-center rounded-full bg-primary/10">
+              <MessageCircle className="size-6 text-primary" />
+            </div>
+            <h3 className="mt-4 text-xl">Άμεσα με chatbot</h3>
+            <p className="mt-2 flex-1 text-sm text-muted-foreground">
+              Κλείσε το ραντεβού σου σε λίγα δευτερόλεπτα μέσω του chatbot.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                const bp = (window as unknown as { botpress?: { open: () => void } }).botpress;
+                if (bp?.open) bp.open();
+              }}
+              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2.5 font-semibold text-primary-foreground transition-transform hover:scale-[1.02]"
+            >
+              <MessageCircle className="size-4" /> Άνοιξε chat
+            </button>
+          </article>
+
+          <article className="surface-card flex flex-col items-center p-6 text-center">
+            <div className="flex size-12 items-center justify-center rounded-full bg-primary/10">
+              <Phone className="size-6 text-primary" />
+            </div>
+            <h3 className="mt-4 text-xl">Τηλεφωνικώς</h3>
+            <p className="mt-2 flex-1 text-sm text-muted-foreground">
+              Κάλεσέ μας για άμεση επιβεβαίωση του ραντεβού σου.
+            </p>
+            <a
+              href="tel:+302741025156"
+              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md border border-border px-4 py-2.5 font-semibold text-foreground transition-colors hover:bg-secondary"
+            >
+              <Phone className="size-4" /> 2741 025156
+            </a>
+          </article>
+
+          <article className="surface-card flex flex-col items-center p-6 text-center">
+            <div className="flex size-12 items-center justify-center rounded-full bg-primary/10">
+              <Instagram className="size-6 text-primary" />
+            </div>
+            <h3 className="mt-4 text-xl">Μέσω Instagram</h3>
+            <p className="mt-2 flex-1 text-sm text-muted-foreground">
+              Στείλε μας DM στο Instagram για να κλείσεις το ραντεβού σου.
+            </p>
+            <a
+              href="https://www.instagram.com/prokopis_barber/"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md border border-border px-4 py-2.5 font-semibold text-foreground transition-colors hover:bg-secondary"
+            >
+              <Instagram className="size-4" /> @prokopis_barber
+            </a>
+          </article>
+        </div>
+      </section>
 
       <section className="mx-auto max-w-5xl px-5 py-16" aria-labelledby="services">
         <h2 id="services" className="text-3xl sm:text-4xl">
