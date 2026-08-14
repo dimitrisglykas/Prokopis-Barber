@@ -71,10 +71,10 @@ function Index() {
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href="tel:+302741025156"
+              href="#book"
               className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 font-semibold text-primary-foreground transition-transform hover:scale-[1.02] sm:w-auto"
             >
-              <Phone className="size-4" /> Κλείσε ραντεβού · 2741 025156
+              <MessageCircle className="size-4" /> Κλείσε ραντεβού
             </a>
             <a
               href="https://maps.google.com/?q=Κολιάτσου+35,+Κόρινθος+20131"
