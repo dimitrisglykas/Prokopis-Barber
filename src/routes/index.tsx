@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Phone, MapPin, Star, Clock, Navigation, Scissors, MessageCircle, Instagram } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
 import storefront from "@/assets/storefront.webp.asset.json";
+import { Reveal } from "@/components/Reveal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -45,34 +46,47 @@ const SERVICES = [
 
 function Index() {
   return (
-    <main className="min-h-screen">
+    <main className="relative min-h-screen overflow-hidden">
+      <div className="ambient-bg" aria-hidden />
+      <div className="ambient-bg-alt" aria-hidden />
+      <div className="grain-overlay" aria-hidden />
+
       <header className="relative isolate overflow-hidden">
         <img
           src={heroImg}
           alt="Εσωτερικό κλασικού κουρείου με φωτισμό και καρέκλα barber"
           width={1600}
           height={1000}
-          className="absolute inset-0 h-full w-full object-cover opacity-40"
+          className="animate-slow-zoom absolute inset-0 h-full w-full object-cover opacity-40"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/80 to-background" />
-        <div className="pole-stripes absolute inset-x-0 top-0 h-1.5" />
+        <div className="pole-stripes animate-stripes absolute inset-x-0 top-0 h-1.5" />
 
         <div className="relative mx-auto max-w-5xl px-5 pb-16 pt-20 text-center sm:pb-24 sm:pt-28">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-primary">
+          <p
+            className="animate-rise text-xs font-semibold uppercase tracking-[0.35em] text-primary"
+            style={{ animationDelay: "60ms" }}
+          >
             Est. Κόρινθος · Ελλάδα
           </p>
-          <h1 className="mt-5 text-5xl leading-[0.95] sm:text-7xl">
-            <span className="text-gold-gradient">Προκόπης Ντερτιλής</span>
+          <h1 className="animate-rise mt-5 text-5xl leading-[0.95] sm:text-7xl" style={{ animationDelay: "160ms" }}>
+            <span className="shimmer-text">Προκόπης Ντερτιλής</span>
             <span className="mt-2 block text-foreground">Barber Shop</span>
           </h1>
-          <p className="mx-auto mt-5 max-w-md text-base text-muted-foreground sm:text-lg">
+          <p
+            className="animate-rise mx-auto mt-5 max-w-md text-base text-muted-foreground sm:text-lg"
+            style={{ animationDelay: "280ms" }}
+          >
             Shear / Shave / Shine. Κλασική τεχνική κουρέα με σύγχρονο styling.
           </p>
 
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div
+            className="animate-rise mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
+            style={{ animationDelay: "400ms" }}
+          >
             <a
               href="#book"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 font-semibold text-primary-foreground transition-transform hover:scale-[1.02] sm:w-auto"
+              className="animate-glow inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 font-semibold text-primary-foreground transition-transform duration-300 hover:scale-[1.04] active:scale-95 sm:w-auto"
             >
               <MessageCircle className="size-4" /> Κλείσε ραντεβού
             </a>
@@ -80,17 +94,25 @@ function Index() {
               href="https://maps.google.com/?q=Κολιάτσου+35,+Κόρινθος+20131"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-border px-6 py-3 font-semibold text-foreground transition-colors hover:bg-secondary sm:w-auto"
+              className="group inline-flex w-full items-center justify-center gap-2 rounded-md border border-border px-6 py-3 font-semibold text-foreground transition-all duration-300 hover:scale-[1.02] hover:border-primary/50 hover:bg-secondary sm:w-auto"
             >
-              <Navigation className="size-4" /> Οδηγίες
+              <Navigation className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />{" "}
+              Οδηγίες
             </a>
           </div>
 
-          <div className="mt-10 inline-flex items-center gap-3 rounded-full border border-border bg-card/70 px-5 py-2 backdrop-blur">
+          <div
+            className="animate-rise animate-float mt-10 inline-flex items-center gap-3 rounded-full border border-border bg-card/70 px-5 py-2 backdrop-blur"
+            style={{ animationDelay: "520ms" }}
+          >
             <span className="font-display text-2xl text-primary">4,8</span>
             <span className="flex gap-0.5" aria-hidden>
               {[0, 1, 2, 3, 4].map((i) => (
-                <Star key={i} className="size-4 fill-primary text-primary" />
+                <Star
+                  key={i}
+                  className="animate-rise size-4 fill-primary text-primary"
+                  style={{ animationDelay: `${600 + i * 90}ms` }}
+                />
               ))}
             </span>
             <span className="text-sm text-muted-foreground">72 κριτικές Google</span>
@@ -98,16 +120,20 @@ function Index() {
         </div>
       </header>
 
-      <section className="mx-auto max-w-5xl px-5 py-10" aria-labelledby="book">
-        <h2 id="book" className="text-center text-3xl sm:text-4xl">
+      <section className="relative mx-auto max-w-5xl px-5 py-10" aria-labelledby="book">
+        <Reveal as="h2" id="book" className="text-center text-3xl sm:text-4xl">
           Κλείσε ραντεβού
-        </h2>
-        <p className="mx-auto mt-3 max-w-lg text-center text-sm text-muted-foreground sm:text-base">
+        </Reveal>
+        <Reveal
+          as="p"
+          delay={80}
+          className="mx-auto mt-3 max-w-lg text-center text-sm text-muted-foreground sm:text-base"
+        >
           Επίλεξε τον τρόπο που σου ταιριάζει — άμεσα, τηλεφωνικά ή μέσω Instagram.
-        </p>
+        </Reveal>
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          <article className="surface-card flex flex-col items-center p-6 text-center">
-            <div className="flex size-12 items-center justify-center rounded-full bg-primary/10">
+          <Reveal as="article" delay={120} className="surface-card lift-card group flex flex-col items-center p-6 text-center">
+            <div className="flex size-12 items-center justify-center rounded-full bg-primary/10 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
               <MessageCircle className="size-6 text-primary" />
             </div>
             <h3 className="mt-4 text-xl">Άμεσα με chatbot</h3>
@@ -120,14 +146,14 @@ function Index() {
                 const bp = (window as unknown as { botpress?: { open: () => void } }).botpress;
                 if (bp?.open) bp.open();
               }}
-              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2.5 font-semibold text-primary-foreground transition-transform hover:scale-[1.02]"
+              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2.5 font-semibold text-primary-foreground transition-transform duration-300 hover:scale-[1.03] active:scale-95"
             >
               <MessageCircle className="size-4" /> Άνοιξε chat
             </button>
-          </article>
+          </Reveal>
 
-          <article className="surface-card flex flex-col items-center p-6 text-center">
-            <div className="flex size-12 items-center justify-center rounded-full bg-primary/10">
+          <Reveal as="article" delay={220} className="surface-card lift-card group flex flex-col items-center p-6 text-center">
+            <div className="flex size-12 items-center justify-center rounded-full bg-primary/10 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
               <Phone className="size-6 text-primary" />
             </div>
             <h3 className="mt-4 text-xl">Τηλεφωνικώς</h3>
@@ -136,14 +162,14 @@ function Index() {
             </p>
             <a
               href="tel:+302741025156"
-              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md border border-border px-4 py-2.5 font-semibold text-foreground transition-colors hover:bg-secondary"
+              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md border border-border px-4 py-2.5 font-semibold text-foreground transition-all duration-300 hover:scale-[1.02] hover:border-primary/50 hover:bg-secondary"
             >
               <Phone className="size-4" /> 2741 025156
             </a>
-          </article>
+          </Reveal>
 
-          <article className="surface-card flex flex-col items-center p-6 text-center">
-            <div className="flex size-12 items-center justify-center rounded-full bg-primary/10">
+          <Reveal as="article" delay={320} className="surface-card lift-card group flex flex-col items-center p-6 text-center">
+            <div className="flex size-12 items-center justify-center rounded-full bg-primary/10 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
               <Instagram className="size-6 text-primary" />
             </div>
             <h3 className="mt-4 text-xl">Μέσω Instagram</h3>
@@ -154,67 +180,71 @@ function Index() {
               href="https://www.instagram.com/prokopis_barber/"
               target="_blank"
               rel="noreferrer"
-              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md border border-border px-4 py-2.5 font-semibold text-foreground transition-colors hover:bg-secondary"
+              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md border border-border px-4 py-2.5 font-semibold text-foreground transition-all duration-300 hover:scale-[1.02] hover:border-primary/50 hover:bg-secondary"
             >
               <Instagram className="size-4" /> @prokopis_barber
             </a>
-          </article>
+          </Reveal>
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-5 py-16" aria-labelledby="services">
-        <h2 id="services" className="text-3xl sm:text-4xl">
+      <section className="relative mx-auto max-w-5xl px-5 py-16" aria-labelledby="services">
+        <Reveal as="h2" id="services" className="text-3xl sm:text-4xl">
           Υπηρεσίες
-        </h2>
+        </Reveal>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((s) => (
-            <article key={s.title} className="surface-card p-5">
-              <Scissors className="size-5 text-primary" />
+          {SERVICES.map((s, i) => (
+            <Reveal as="article" key={s.title} delay={100 + i * 90} className="surface-card lift-card group p-5">
+              <Scissors className="size-5 text-primary transition-transform duration-500 group-hover:rotate-[-18deg] group-hover:scale-110" />
               <h3 className="mt-4 text-xl">{s.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
-            </article>
+            </Reveal>
           ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="hours">
+      <section className="relative mx-auto max-w-5xl px-5 py-8" aria-labelledby="hours">
         <div className="grid gap-6 lg:grid-cols-2">
-          <div className="surface-card p-6">
+          <Reveal className="surface-card lift-card p-6">
             <h2 id="hours" className="flex items-center gap-2 text-3xl">
-              <Clock className="size-6 text-primary" /> Ωράριο
+              <Clock className="animate-float size-6 text-primary" /> Ωράριο
             </h2>
             <dl className="mt-6 divide-y divide-border">
-              {HOURS.map((h) => (
-                <div key={h.day} className="flex items-start justify-between gap-4 py-3">
+              {HOURS.map((h, i) => (
+                <Reveal
+                  key={h.day}
+                  delay={60 + i * 60}
+                  className="flex items-start justify-between gap-4 py-3 transition-colors duration-300 hover:text-primary"
+                >
                   <dt className="font-semibold">{h.day}</dt>
                   <dd className="text-right text-sm text-muted-foreground">
                     {h.slots.map((slot) => (
                       <div key={slot}>{slot}</div>
                     ))}
                   </dd>
-                </div>
+                </Reveal>
               ))}
             </dl>
-            <p className="mt-4 text-xs text-muted-foreground">
-              Το ωράριο ίσως διαφέρει σε αργίες.
-            </p>
-          </div>
+            <p className="mt-4 text-xs text-muted-foreground">Το ωράριο ίσως διαφέρει σε αργίες.</p>
+          </Reveal>
 
-          <div className="surface-card overflow-hidden">
-            <img
-              src={storefront.url}
-              alt="Η πρόσοψη του Barber Shop Προκόπης στην Κόρινθο"
-              loading="lazy"
-              className="h-56 w-full object-cover sm:h-72"
-            />
+          <Reveal delay={140} className="surface-card lift-card group overflow-hidden">
+            <div className="overflow-hidden">
+              <img
+                src={storefront.url}
+                alt="Η πρόσοψη του Barber Shop Προκόπης στην Κόρινθο"
+                loading="lazy"
+                className="h-56 w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110 sm:h-72"
+              />
+            </div>
             <div className="p-6">
               <h2 className="flex items-center gap-2 text-3xl">
-                <MapPin className="size-6 text-primary" /> Πού θα μας βρεις
+                <MapPin className="animate-float size-6 text-primary" /> Πού θα μας βρεις
               </h2>
               <p className="mt-4 text-muted-foreground">Κολιάτσου 35, Κόρινθος 201 31</p>
               <a
                 href="tel:+302741025156"
-                className="mt-1 block font-semibold text-primary hover:underline"
+                className="story-link mt-1 block font-semibold text-primary"
               >
                 2741 025156
               </a>
@@ -222,30 +252,32 @@ function Index() {
                 href="https://www.instagram.com/prokopis_barber/"
                 target="_blank"
                 rel="noreferrer"
-                className="mt-4 inline-block text-sm text-muted-foreground hover:text-foreground"
+                className="mt-4 inline-block text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground"
               >
                 @prokopis_barber στο Instagram
               </a>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-5 py-8">
-        <div className="surface-card overflow-hidden">
+      <section className="relative mx-auto max-w-5xl px-5 py-8">
+        <Reveal className="surface-card overflow-hidden">
           <iframe
             title="Χάρτης – Barber Shop Προκόπης, Κολιάτσου 35, Κόρινθος"
             src="https://www.google.com/maps?q=%CE%9A%CE%BF%CE%BB%CE%B9%CE%AC%CF%84%CF%83%CE%BF%CF%85%2035%2C%20%CE%9A%CF%8C%CF%81%CE%B9%CE%BD%CE%B8%CE%BF%CF%82%2020131&output=embed"
             loading="lazy"
             className="h-72 w-full border-0 sm:h-96"
           />
-        </div>
+        </Reveal>
       </section>
 
-      <footer className="mt-8 border-t border-border py-10 text-center text-sm text-muted-foreground">
-        <div className="pole-stripes mx-auto mb-6 h-1 w-24 rounded-full" />
-        <p>Προκόπης Ντερτιλής Μ. Barber Shop · Κολιάτσου 35, Κόρινθος</p>
-        <p className="mt-1">Κουρείο · Ανδρικά κουρέματα &amp; styling</p>
+      <footer className="relative mt-8 border-t border-border py-10 text-center text-sm text-muted-foreground">
+        <div className="pole-stripes animate-stripes mx-auto mb-6 h-1 w-24 rounded-full" />
+        <Reveal as="p">Προκόπης Ντερτιλής Μ. Barber Shop · Κολιάτσου 35, Κόρινθος</Reveal>
+        <Reveal as="p" delay={80} className="mt-1">
+          Κουρείο · Ανδρικά κουρέματα &amp; styling
+        </Reveal>
       </footer>
     </main>
   );
