@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Phone, MapPin, Star, Clock, Navigation, Scissors, MessageCircle, Instagram } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
+import { Reveal } from "@/components/Reveal";
 import storefront from "@/assets/storefront.webp.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -52,24 +53,24 @@ function Index() {
           alt="Εσωτερικό κλασικού κουρείου με φωτισμό και καρέκλα barber"
           width={1600}
           height={1000}
-          className="absolute inset-0 h-full w-full object-cover opacity-40"
+          className="absolute inset-0 h-full w-full scale-105 object-cover opacity-40 motion-safe:animate-[rise-in_1.2s_ease-out_both]"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/80 to-background" />
-        <div className="pole-stripes absolute inset-x-0 top-0 h-1.5" />
+        <div className="pole-stripes stripe-animate absolute inset-x-0 top-0 h-1.5" />
 
         <div className="relative mx-auto max-w-5xl px-5 pb-16 pt-20 text-center sm:pb-24 sm:pt-28">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-primary">
+          <p className="rise-in text-xs font-semibold uppercase tracking-[0.35em] text-primary">
             Est. Κόρινθος · Ελλάδα
           </p>
-          <h1 className="mt-5 text-5xl leading-[0.95] sm:text-7xl">
+          <h1 className="rise-in mt-5 text-5xl leading-[0.95] sm:text-7xl [animation-delay:120ms]">
             <span className="text-gold-gradient">Προκόπης Ντερτιλής</span>
             <span className="mt-2 block text-foreground">Barber Shop</span>
           </h1>
-          <p className="mx-auto mt-5 max-w-md text-base text-muted-foreground sm:text-lg">
+          <p className="rise-in mx-auto mt-5 max-w-md text-base text-muted-foreground sm:text-lg [animation-delay:240ms]">
             Shear / Shave / Shine. Κλασική τεχνική κουρέα με σύγχρονο styling.
           </p>
 
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="rise-in mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row [animation-delay:360ms]">
             <a
               href="#book"
               className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 font-semibold text-primary-foreground transition-transform hover:scale-[1.02] sm:w-auto"
@@ -86,7 +87,7 @@ function Index() {
             </a>
           </div>
 
-          <div className="mt-10 inline-flex items-center gap-3 rounded-full border border-border bg-card/70 px-5 py-2 backdrop-blur">
+          <div className="rise-in mt-10 inline-flex items-center gap-3 rounded-full border border-border bg-card/70 px-5 py-2 backdrop-blur [animation-delay:480ms]">
             <span className="font-display text-2xl text-primary">4,8</span>
             <span className="flex gap-0.5" aria-hidden>
               {[0, 1, 2, 3, 4].map((i) => (
@@ -98,7 +99,7 @@ function Index() {
         </div>
       </header>
 
-      <section className="mx-auto max-w-5xl px-5 py-10" aria-labelledby="book">
+      <Reveal as="section" className="mx-auto max-w-5xl px-5 py-10">
         <h2 id="book" className="text-center text-3xl sm:text-4xl">
           Κλείσε ραντεβού
         </h2>
@@ -106,7 +107,7 @@ function Index() {
           Επίλεξε τον τρόπο που σου ταιριάζει — άμεσα, τηλεφωνικά ή μέσω Instagram.
         </p>
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          <article className="surface-card flex flex-col items-center p-6 text-center">
+          <article className="surface-card card-lift flex flex-col items-center p-6 text-center">
             <div className="flex size-12 items-center justify-center rounded-full bg-primary/10">
               <MessageCircle className="size-6 text-primary" />
             </div>
@@ -126,7 +127,7 @@ function Index() {
             </button>
           </article>
 
-          <article className="surface-card flex flex-col items-center p-6 text-center">
+          <article className="surface-card card-lift flex flex-col items-center p-6 text-center">
             <div className="flex size-12 items-center justify-center rounded-full bg-primary/10">
               <Phone className="size-6 text-primary" />
             </div>
@@ -142,7 +143,7 @@ function Index() {
             </a>
           </article>
 
-          <article className="surface-card flex flex-col items-center p-6 text-center">
+          <article className="surface-card card-lift flex flex-col items-center p-6 text-center">
             <div className="flex size-12 items-center justify-center rounded-full bg-primary/10">
               <Instagram className="size-6 text-primary" />
             </div>
@@ -160,24 +161,28 @@ function Index() {
             </a>
           </article>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="mx-auto max-w-5xl px-5 py-16" aria-labelledby="services">
+      <Reveal as="section" className="mx-auto max-w-5xl px-5 py-16">
         <h2 id="services" className="text-3xl sm:text-4xl">
           Υπηρεσίες
         </h2>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((s) => (
-            <article key={s.title} className="surface-card p-5">
+          {SERVICES.map((s, i) => (
+            <article
+              key={s.title}
+              className="surface-card card-lift rise-in p-5"
+              style={{ animationDelay: `${i * 80}ms` }}
+            >
               <Scissors className="size-5 text-primary" />
               <h3 className="mt-4 text-xl">{s.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
             </article>
           ))}
         </div>
-      </section>
+      </Reveal>
 
-      <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="hours">
+      <Reveal as="section" className="mx-auto max-w-5xl px-5 py-8">
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="surface-card p-6">
             <h2 id="hours" className="flex items-center gap-2 text-3xl">
@@ -229,9 +234,9 @@ function Index() {
             </div>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="mx-auto max-w-5xl px-5 py-8">
+      <Reveal as="section" className="mx-auto max-w-5xl px-5 py-8">
         <div className="surface-card overflow-hidden">
           <iframe
             title="Χάρτης – Barber Shop Προκόπης, Κολιάτσου 35, Κόρινθος"
@@ -240,10 +245,10 @@ function Index() {
             className="h-72 w-full border-0 sm:h-96"
           />
         </div>
-      </section>
+      </Reveal>
 
       <footer className="mt-8 border-t border-border py-10 text-center text-sm text-muted-foreground">
-        <div className="pole-stripes mx-auto mb-6 h-1 w-24 rounded-full" />
+        <div className="pole-stripes stripe-animate mx-auto mb-6 h-1 w-24 rounded-full" />
         <p>Προκόπης Ντερτιλής Μ. Barber Shop · Κολιάτσου 35, Κόρινθος</p>
         <p className="mt-1">Κουρείο · Ανδρικά κουρέματα &amp; styling</p>
       </footer>
