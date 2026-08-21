@@ -244,7 +244,7 @@ function Index() {
               <p className="mt-4 text-muted-foreground">Κολιάτσου 35, Κόρινθος 201 31</p>
               <a
                 href="tel:+302741025156"
-                className="story-link mt-1 block font-semibold text-primary"
+                className="mt-1 block font-semibold text-primary transition-colors duration-300 hover:text-primary/80"
               >
                 2741 025156
               </a>
