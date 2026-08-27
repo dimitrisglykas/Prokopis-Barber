@@ -131,6 +131,39 @@ function Index() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="prices">
+        <h2 id="prices" className="text-3xl sm:text-4xl">
+          Τιμοκατάλογος
+        </h2>
+        <ul className="mt-8 surface-card divide-y divide-border p-2">
+          {PRICES.map((p) => (
+            <li key={p.title} className="flex items-center justify-between gap-4 px-4 py-4">
+              <span className="font-semibold">{p.title}</span>
+              <span className="font-display text-xl text-primary">{p.price}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="gallery">
+        <h2 id="gallery" className="text-3xl sm:text-4xl">
+          Φωτογραφίες δουλειάς
+        </h2>
+        <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          {GALLERY.map((g) => (
+            <figure key={g.src} className="surface-card overflow-hidden">
+              <img
+                src={g.src}
+                alt={g.alt}
+                loading="lazy"
+                className="aspect-[3/4] w-full object-cover"
+              />
+            </figure>
+          ))}
+        </div>
+      </section>
+
+
       <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="hours">
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="surface-card p-6">
