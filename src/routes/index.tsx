@@ -2,6 +2,24 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Phone, MapPin, Star, Clock, Navigation, Scissors } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
 import storefront from "@/assets/storefront.webp.asset.json";
+import work1 from "@/assets/work-100056.png.asset.json";
+import work2 from "@/assets/work-100135.png.asset.json";
+import work3 from "@/assets/work-100150.png.asset.json";
+import work4 from "@/assets/work-100159.png.asset.json";
+
+const GALLERY = [
+  { src: work1.url, alt: "Slick back με fade – δουλειά του κουρείου" },
+  { src: work2.url, alt: "Textured crop με χαμηλό fade" },
+  { src: work3.url, alt: "Mullet με drop fade" },
+  { src: work4.url, alt: "Taper fade σε σγουρά μαλλιά" },
+];
+
+const PRICES = [
+  { title: "Κούρεμα μόνο με μηχανή", price: "5€" },
+  { title: "Ανδρικό κούρεμα", price: "8€ – 10€ – 12€" },
+  { title: "Παιδικό κούρεμα", price: "8€" },
+  { title: "Λούσιμο", price: "Δωρεάν" },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
