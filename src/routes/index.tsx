@@ -2,6 +2,24 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Phone, MapPin, Star, Clock, Navigation, Scissors } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
 import storefront from "@/assets/storefront.webp.asset.json";
+import work1 from "@/assets/work-100056.png.asset.json";
+import work2 from "@/assets/work-100135.png.asset.json";
+import work3 from "@/assets/work-100150.png.asset.json";
+import work4 from "@/assets/work-100159.png.asset.json";
+
+const GALLERY = [
+  { src: work1.url, alt: "Slick back με fade – δουλειά του κουρείου" },
+  { src: work2.url, alt: "Textured crop με χαμηλό fade" },
+  { src: work3.url, alt: "Mullet με drop fade" },
+  { src: work4.url, alt: "Taper fade σε σγουρά μαλλιά" },
+];
+
+const PRICES = [
+  { title: "Κούρεμα μόνο με μηχανή", price: "5€" },
+  { title: "Ανδρικό κούρεμα", price: "8€ – 10€ – 12€" },
+  { title: "Παιδικό κούρεμα", price: "8€" },
+  { title: "Λούσιμο", price: "Δωρεάν" },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -112,6 +130,39 @@ function Index() {
           ))}
         </div>
       </section>
+
+      <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="prices">
+        <h2 id="prices" className="text-3xl sm:text-4xl">
+          Τιμοκατάλογος
+        </h2>
+        <ul className="mt-8 surface-card divide-y divide-border p-2">
+          {PRICES.map((p) => (
+            <li key={p.title} className="flex items-center justify-between gap-4 px-4 py-4">
+              <span className="font-semibold">{p.title}</span>
+              <span className="font-display text-xl text-primary">{p.price}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="gallery">
+        <h2 id="gallery" className="text-3xl sm:text-4xl">
+          Φωτογραφίες δουλειάς
+        </h2>
+        <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          {GALLERY.map((g) => (
+            <figure key={g.src} className="surface-card overflow-hidden">
+              <img
+                src={g.src}
+                alt={g.alt}
+                loading="lazy"
+                className="aspect-[3/4] w-full object-cover"
+              />
+            </figure>
+          ))}
+        </div>
+      </section>
+
 
       <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="hours">
         <div className="grid gap-6 lg:grid-cols-2">
