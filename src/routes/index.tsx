@@ -290,13 +290,22 @@ function Index() {
                 2741 025156
               </a>
               <a
-                href="https://www.instagram.com/prokopis_barber/"
+                href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noreferrer"
                 className="mt-4 inline-block text-sm text-muted-foreground hover:text-foreground"
               >
-                @prokopis_barber στο Instagram
+                @prokopis_barber στο Instagram – ραντεβού με μήνυμα
               </a>
+              <a
+                href={REVIEW_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-2 block text-sm text-primary hover:underline"
+              >
+                Άφησε αξιολόγηση στο Google
+              </a>
+
             </div>
           </div>
         </div>
