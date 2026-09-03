@@ -384,72 +384,20 @@ function Index() {
         <h2 id="gallery" className="text-3xl sm:text-4xl">
           Φωτογραφίες δουλειάς
         </h2>
-        <div className="mt-6 flex flex-wrap gap-2">
-          {CATEGORIES.map((c) => (
-            <button
-              key={c.id}
-              type="button"
-              onClick={() => setCat(c.id)}
-              aria-pressed={cat === c.id}
-              className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
-                cat === c.id
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-border text-muted-foreground hover:bg-secondary"
-              }`}
-            >
-              {c.label}
-            </button>
-          ))}
-        </div>
-        <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {visible.map((g) => (
+        <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-3">
+          {GALLERY.map((g) => (
             <figure key={g.src} className="surface-card overflow-hidden">
-              <button
-                type="button"
-                onClick={() => setLightbox(g)}
-                className="block w-full"
-                aria-label={`Προβολή φωτογραφίας: ${g.alt}`}
-              >
-                <img
-                  src={g.src}
-                  alt={g.alt}
-                  loading="lazy"
-                  className="aspect-[3/4] w-full object-cover transition-transform duration-300 hover:scale-105"
-                />
-              </button>
+              <img
+                src={g.src}
+                alt={g.alt}
+                loading="lazy"
+                className="aspect-[3/4] w-full object-cover transition-transform duration-500 hover:scale-105"
+              />
             </figure>
           ))}
         </div>
       </section>
 
-      {lightbox !== null && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label="Προβολή φωτογραφίας"
-          onClick={() => setLightbox(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 p-4 backdrop-blur"
-        >
-          <button
-            type="button"
-            onClick={() => setLightbox(null)}
-            aria-label="Κλείσιμο"
-            className="absolute right-4 top-4 rounded-full border border-border p-2 text-foreground"
-          >
-            <X className="size-5" />
-          </button>
-          <figure onClick={(e) => e.stopPropagation()} className="max-h-full">
-            <img
-              src={lightbox.src}
-              alt={lightbox.alt}
-              className="max-h-[80vh] w-auto rounded-md object-contain"
-            />
-            <figcaption className="mt-3 text-center text-sm text-muted-foreground">
-              {lightbox.alt}
-            </figcaption>
-          </figure>
-        </div>
-      )}
 
       <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="hours">
         <div className="grid gap-6 lg:grid-cols-2">
