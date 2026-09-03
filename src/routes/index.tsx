@@ -9,18 +9,21 @@ import {
   Instagram,
 } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
-import storefront from "@/assets/koureio-korinthos-barber-shop-prosopsi-kolliatsou-35.jpg.asset.json";
-import workSlickBack from "@/assets/koureio-korinthos-andriko-kourema-slick-back-fade.png.asset.json";
-import workMachineLow from "@/assets/koureio-korinthos-kourema-me-mixani-low-fade.png.asset.json";
-import workMachineDrop from "@/assets/koureio-korinthos-kourema-me-mixani-drop-fade.png.asset.json";
-import workKids from "@/assets/koureio-korinthos-paidiko-kourema-taper-fade.png.asset.json";
-import workMullet from "@/assets/koureio-korinthos-andriko-kourema-mullet.png.asset.json";
-import workBurstFade from "@/assets/koureio-korinthos-andriko-kourema-burst-fade-vafi.png.asset.json";
+import logo from "@/assets/logo-prokopis-barber-shop.png.asset.json";
+import storefront from "@/assets/koureio-korinthos-barber-shop-prosopsi-kolliatsou-35.webp.asset.json";
+import ogImage from "@/assets/og-koureio-korinthos.jpg.asset.json";
+import workSlickBack from "@/assets/koureio-korinthos-andriko-kourema-slick-back-fade.webp.asset.json";
+import workMachineLow from "@/assets/koureio-korinthos-kourema-me-mixani-low-fade.webp.asset.json";
+import workMachineDrop from "@/assets/koureio-korinthos-kourema-me-mixani-drop-fade.webp.asset.json";
+import workKids from "@/assets/koureio-korinthos-paidiko-kourema-taper-fade.webp.asset.json";
+import workMullet from "@/assets/koureio-korinthos-andriko-kourema-mullet.webp.asset.json";
+import workBurstFade from "@/assets/koureio-korinthos-andriko-kourema-burst-fade-vafi.webp.asset.json";
 
 const SITE = "https://prokopis.lovable.app";
 const REVIEW_URL = "https://g.page/r/CSuxeKbN7oEXEBM/review";
 const INSTAGRAM_URL = "https://www.instagram.com/prokopis_barber/";
-const OG_IMAGE = `${SITE}${storefront.url}`;
+const OG_IMAGE = `${SITE}${ogImage.url}`;
+const LOGO_URL = `${SITE}${logo.url}`;
 
 const GALLERY = [
   {
@@ -114,6 +117,7 @@ export const Route = createFileRoute("/")({
           description:
             "Κουρείο στην Κόρινθο με ανδρικά κουρέματα, fade, περιποίηση γενειάδας και παιδικά κουρέματα. Λούσιμο δωρεάν.",
           image: OG_IMAGE,
+          logo: LOGO_URL,
           url: SITE,
           telephone: "+302741025156",
           priceRange: "€",
@@ -242,8 +246,15 @@ function Index() {
         <div className="pole-stripes absolute inset-x-0 top-0 h-1.5" />
 
         <div className="relative mx-auto max-w-5xl px-5 pb-16 pt-20 text-center sm:pb-24 sm:pt-28">
+          <img
+            src={logo.url}
+            alt="Λογότυπο Προκόπης Barber Shop, κουρείο στην Κόρινθο"
+            width={128}
+            height={128}
+            className="mx-auto mb-6 size-28 rounded-full sm:size-32"
+          />
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-primary">
-            Est. Κόρινθος · Ελλάδα
+            Est. 1926 · Κόρινθος
           </p>
           <h1 className="mt-5 text-5xl leading-[0.95] sm:text-7xl">
             <span className="text-gold-gradient">Προκόπης Ντερτιλής</span>
@@ -343,6 +354,10 @@ function Index() {
                 src={g.src}
                 alt={g.alt}
                 loading="lazy"
+                decoding="async"
+                width={900}
+                height={1200}
+                sizes="(min-width: 1024px) 33vw, 50vw"
                 className="aspect-[3/4] w-full object-cover transition-transform duration-500 hover:scale-105"
               />
             </figure>
@@ -379,6 +394,9 @@ function Index() {
               src={storefront.url}
               alt="Η πρόσοψη του Barber Shop Προκόπης στην Κόρινθο"
               loading="lazy"
+              decoding="async"
+              width={1200}
+              height={900}
               className="h-56 w-full object-cover sm:h-72"
             />
             <div className="p-6">
