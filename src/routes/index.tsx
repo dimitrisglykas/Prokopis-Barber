@@ -305,51 +305,8 @@ function Index() {
         </div>
       </header>
 
-      <section className="mx-auto max-w-5xl px-5 py-16" aria-labelledby="packages">
-        <h2 id="packages" className="text-3xl sm:text-4xl">
-          Προσφορές &amp; Πακέτα
-        </h2>
-        <p className="mt-3 text-sm text-muted-foreground">
-          Διάλεξε γρήγορα και έλα – χωρίς σκοτούρες.
-        </p>
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          {PACKAGES.map((p) => (
-            <article
-              key={p.name}
-              className={`surface-card relative flex flex-col p-6 ${
-                p.featured ? "border-primary ring-1 ring-primary" : ""
-              }`}
-            >
-              {p.featured && (
-                <span className="absolute -top-3 left-6 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
-                  {p.tagline}
-                </span>
-              )}
-              <h3 className="text-2xl">{p.name}</h3>
-              {!p.featured && (
-                <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
-                  {p.tagline}
-                </p>
-              )}
-              <p className="mt-4 font-display text-4xl text-primary">{p.price}</p>
-              <ul className="mt-4 flex-1 space-y-2 text-sm text-muted-foreground">
-                {p.includes.map((i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <Check className="mt-0.5 size-4 shrink-0 text-primary" />
-                    <span>{i}</span>
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="tel:+302741025156"
-                className="mt-6 inline-flex items-center justify-center gap-2 rounded-md bg-primary px-4 py-2.5 font-semibold text-primary-foreground"
-              >
-                <Phone className="size-4" /> Κλείσε ραντεβού
-              </a>
-            </article>
-          ))}
-        </div>
-      </section>
+
+
 
       <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="services">
         <h2 id="services" className="text-3xl sm:text-4xl">
