@@ -92,6 +92,15 @@ export const Route = createFileRoute("/")({
       { property: "og:site_name", content: "Προκόπης Ντερτιλής Μ. Barber Shop" },
       { property: "og:url", content: SITE },
       { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:secure_url", content: OG_IMAGE },
+      { property: "og:image:type", content: "image/jpeg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      {
+        property: "og:image:alt",
+        content:
+          "Λογότυπο Προκόπης Ντερτιλής Μ. Barber Shop – Κουρείο στην Κόρινθο, Κολιάτσου 35",
+      },
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
@@ -100,9 +109,14 @@ export const Route = createFileRoute("/")({
       {
         name: "twitter:description",
         content:
-          "Ανδρικά & παιδικά κουρέματα στην Κόρινθο, Κολιάτσου 35. Λούσιμο δωρεάν. 4,8/5 από 72 κριτικές.",
+          "Ανδρικά & παιδικά κουρέματα στην Κόρινθο, Κολιάτσου 35. Λούσιμο δωρεάν. 4,8/5 από 72 κριτικές. Τηλ. 2741 025156.",
       },
       { name: "twitter:image", content: OG_IMAGE },
+      {
+        name: "twitter:image:alt",
+        content:
+          "Λογότυπο Προκόπης Ντερτιλής Μ. Barber Shop – Κουρείο Κόρινθος",
+      },
     ],
     links: [{ rel: "canonical", href: SITE }],
     scripts: [
