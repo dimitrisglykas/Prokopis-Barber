@@ -9,18 +9,21 @@ import {
   Instagram,
 } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
-import storefront from "@/assets/koureio-korinthos-barber-shop-prosopsi-kolliatsou-35.jpg.asset.json";
-import workSlickBack from "@/assets/koureio-korinthos-andriko-kourema-slick-back-fade.png.asset.json";
-import workMachineLow from "@/assets/koureio-korinthos-kourema-me-mixani-low-fade.png.asset.json";
-import workMachineDrop from "@/assets/koureio-korinthos-kourema-me-mixani-drop-fade.png.asset.json";
-import workKids from "@/assets/koureio-korinthos-paidiko-kourema-taper-fade.png.asset.json";
-import workMullet from "@/assets/koureio-korinthos-andriko-kourema-mullet.png.asset.json";
-import workBurstFade from "@/assets/koureio-korinthos-andriko-kourema-burst-fade-vafi.png.asset.json";
+import logo from "@/assets/logo-prokopis-barber-shop.png.asset.json";
+import storefront from "@/assets/koureio-korinthos-barber-shop-prosopsi-kolliatsou-35.webp.asset.json";
+import ogImage from "@/assets/og-koureio-korinthos.jpg.asset.json";
+import workSlickBack from "@/assets/koureio-korinthos-andriko-kourema-slick-back-fade.webp.asset.json";
+import workMachineLow from "@/assets/koureio-korinthos-kourema-me-mixani-low-fade.webp.asset.json";
+import workMachineDrop from "@/assets/koureio-korinthos-kourema-me-mixani-drop-fade.webp.asset.json";
+import workKids from "@/assets/koureio-korinthos-paidiko-kourema-taper-fade.webp.asset.json";
+import workMullet from "@/assets/koureio-korinthos-andriko-kourema-mullet.webp.asset.json";
+import workBurstFade from "@/assets/koureio-korinthos-andriko-kourema-burst-fade-vafi.webp.asset.json";
 
 const SITE = "https://prokopis.lovable.app";
 const REVIEW_URL = "https://g.page/r/CSuxeKbN7oEXEBM/review";
 const INSTAGRAM_URL = "https://www.instagram.com/prokopis_barber/";
-const OG_IMAGE = `${SITE}${storefront.url}`;
+const OG_IMAGE = `${SITE}${ogImage.url}`;
+const LOGO_URL = `${SITE}${logo.url}`;
 
 const GALLERY = [
   {
