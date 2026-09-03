@@ -272,7 +272,7 @@ const SERVICES = [
 
 function Index() {
   const [cat, setCat] = useState<string>("all");
-  const [lightbox, setLightbox] = useState<number | null>(null);
+  const [lightbox, setLightbox] = useState<(typeof GALLERY)[number] | null>(null);
 
   const visible = GALLERY.filter((g) => cat === "all" || g.cat === cat);
 
@@ -449,7 +449,7 @@ function Index() {
             <figure key={g.src} className="surface-card overflow-hidden">
               <button
                 type="button"
-                onClick={() => setLightbox(GALLERY.indexOf(g))}
+                onClick={() => setLightbox(g)}
                 className="block w-full"
                 aria-label={`Προβολή φωτογραφίας: ${g.alt}`}
               >
@@ -483,12 +483,12 @@ function Index() {
           </button>
           <figure onClick={(e) => e.stopPropagation()} className="max-h-full">
             <img
-              src={GALLERY[lightbox].src}
-              alt={GALLERY[lightbox].alt}
+              src={lightbox.src}
+              alt={lightbox.alt}
               className="max-h-[80vh] w-auto rounded-md object-contain"
             />
             <figcaption className="mt-3 text-center text-sm text-muted-foreground">
-              {GALLERY[lightbox].alt}
+              {lightbox.alt}
             </figcaption>
           </figure>
         </div>
