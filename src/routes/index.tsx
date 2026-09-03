@@ -228,10 +228,8 @@ const SERVICES = [
 ];
 
 function Index() {
-  const [cat, setCat] = useState<string>("all");
-  const [lightbox, setLightbox] = useState<(typeof GALLERY)[number] | null>(null);
+  return (
 
-  const visible = GALLERY.filter((g) => cat === "all" || g.cat === cat);
 
   return (
     <main className="min-h-screen">
