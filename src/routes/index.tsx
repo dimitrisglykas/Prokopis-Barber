@@ -16,7 +16,7 @@ import workSlickBack from "@/assets/koureio-korinthos-andriko-kourema-slick-back
 import workMachineLow from "@/assets/koureio-korinthos-kourema-me-mixani-low-fade.webp.asset.json";
 import workMachineDrop from "@/assets/koureio-korinthos-kourema-me-mixani-drop-fade.webp.asset.json";
 import workKids from "@/assets/koureio-korinthos-paidiko-kourema-taper-fade.webp.asset.json";
-import workMullet from "@/assets/koureio-korinthos-andriko-kourema-mullet.webp.asset.json";
+import workBuzzCut from "@/assets/koureio-korinthos-andriko-kourema-buzz-cut.webp.asset.json";
 import workBurstFade from "@/assets/koureio-korinthos-andriko-kourema-burst-fade-vafi.webp.asset.json";
 
 const SITE = "https://prokopis.lovable.app";
@@ -31,8 +31,8 @@ const GALLERY = [
     alt: "Ανδρικό κούρεμα burst fade με βαφή – κουρείο Προκόπης Ντερτιλής, Κόρινθος",
   },
   {
-    src: workMullet.url,
-    alt: "Ανδρικό κούρεμα mullet με όγκο – barber shop Κόρινθος, Κολιάτσου 35",
+    src: workBuzzCut.url,
+    alt: "Ανδρικό κούρεμα buzz cut χωρίς fade – κουρείο Προκόπης Ντερτιλής, Κόρινθος",
   },
   {
     src: workSlickBack.url,
