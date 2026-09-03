@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
 import {
   Phone,
   MapPin,
@@ -8,60 +7,45 @@ import {
   Navigation,
   Scissors,
   Instagram,
-  X,
-  Check,
 } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
-import storefront from "@/assets/storefront-new.jpg.asset.json";
-import work1 from "@/assets/work-100056.png.asset.json";
-import work2 from "@/assets/work-100135.png.asset.json";
-import work3 from "@/assets/work-100150.png.asset.json";
-import work4 from "@/assets/work-100159.png.asset.json";
-import work5 from "@/assets/work-mullet.png.asset.json";
-import work6 from "@/assets/work-burst-fade.png.asset.json";
+import storefront from "@/assets/koureio-korinthos-barber-shop-prosopsi-kolliatsou-35.jpg.asset.json";
+import workSlickBack from "@/assets/koureio-korinthos-andriko-kourema-slick-back-fade.png.asset.json";
+import workMachineLow from "@/assets/koureio-korinthos-kourema-me-mixani-low-fade.png.asset.json";
+import workMachineDrop from "@/assets/koureio-korinthos-kourema-me-mixani-drop-fade.png.asset.json";
+import workKids from "@/assets/koureio-korinthos-paidiko-kourema-taper-fade.png.asset.json";
+import workMullet from "@/assets/koureio-korinthos-andriko-kourema-mullet.png.asset.json";
+import workBurstFade from "@/assets/koureio-korinthos-andriko-kourema-burst-fade-vafi.png.asset.json";
 
 const SITE = "https://prokopis.lovable.app";
 const REVIEW_URL = "https://g.page/r/CSuxeKbN7oEXEBM/review";
 const INSTAGRAM_URL = "https://www.instagram.com/prokopis_barber/";
 const OG_IMAGE = `${SITE}${storefront.url}`;
 
-const CATEGORIES = [
-  { id: "all", label: "Όλα" },
-  { id: "andriko", label: "Ανδρικό" },
-  { id: "mixani", label: "Μηχανή" },
-  { id: "paidiko", label: "Παιδικό" },
-] as const;
-
 const GALLERY = [
   {
-    src: work6.url,
-    cat: "andriko",
-    alt: "Burst fade με χρώμα – ανδρικό κούρεμα στο κουρείο Προκόπης, Κόρινθος",
+    src: workBurstFade.url,
+    alt: "Ανδρικό κούρεμα burst fade με βαφή – κουρείο Προκόπης Ντερτιλής, Κόρινθος",
   },
   {
-    src: work5.url,
-    cat: "andriko",
-    alt: "Mullet με όγκο – ανδρικό κούρεμα Κόρινθος",
+    src: workMullet.url,
+    alt: "Ανδρικό κούρεμα mullet με όγκο – barber shop Κόρινθος, Κολιάτσου 35",
   },
   {
-    src: work1.url,
-    cat: "andriko",
-    alt: "Slick back με fade – ανδρικό κούρεμα Κόρινθος",
+    src: workSlickBack.url,
+    alt: "Ανδρικό κούρεμα slick back με fade – κουρείο στην Κόρινθο",
   },
   {
-    src: work2.url,
-    cat: "mixani",
-    alt: "Κούρεμα μόνο με μηχανή, χαμηλό fade – Κόρινθος",
+    src: workMachineLow.url,
+    alt: "Κούρεμα μόνο με μηχανή, low fade – κουρείο Κόρινθος",
   },
   {
-    src: work3.url,
-    cat: "mixani",
-    alt: "Κούρεμα με μηχανή και drop fade – κουρείο Κόρινθος",
+    src: workMachineDrop.url,
+    alt: "Κούρεμα με μηχανή και drop fade – barber shop στην Κόρινθο",
   },
   {
-    src: work4.url,
-    cat: "paidiko",
-    alt: "Παιδικό κούρεμα taper fade σε σγουρά μαλλιά – Κόρινθος",
+    src: workKids.url,
+    alt: "Παιδικό κούρεμα taper fade σε σγουρά μαλλιά – κουρείο Κόρινθος",
   },
 ];
 
@@ -75,33 +59,6 @@ const PRICES = [
   { title: "Λούσιμο", price: "ΔΩΡΕΑΝ" },
 ];
 
-const PACKAGES = [
-  {
-    name: "Μηχανή Express",
-    price: "8,00€",
-    tagline: "Γρήγορα μέσα – έξω",
-    includes: ["Κούρεμα μόνο με μηχανή", "Καθάρισμα αυχένα", "Λούσιμο δωρεάν"],
-    featured: false,
-  },
-  {
-    name: "Full Service",
-    price: "15,00€",
-    tagline: "Το πιο δημοφιλές",
-    includes: [
-      "Ανδρικό κούρεμα με ψαλίδι & fade",
-      "Σχήμα γενειάδας",
-      "Λούσιμο & styling δωρεάν",
-    ],
-    featured: true,
-  },
-  {
-    name: "Πατέρας & Γιος",
-    price: "16,00€",
-    tagline: "Δύο κουρέματα μαζί",
-    includes: ["Ανδρικό κούρεμα", "Παιδικό κούρεμα", "Λούσιμο δωρεάν"],
-    featured: false,
-  },
-];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -271,11 +228,6 @@ const SERVICES = [
 ];
 
 function Index() {
-  const [cat, setCat] = useState<string>("all");
-  const [lightbox, setLightbox] = useState<(typeof GALLERY)[number] | null>(null);
-
-  const visible = GALLERY.filter((g) => cat === "all" || g.cat === cat);
-
   return (
     <main className="min-h-screen">
       <header className="relative isolate overflow-hidden">
@@ -348,59 +300,16 @@ function Index() {
         </div>
       </header>
 
-      <section className="mx-auto max-w-5xl px-5 py-16" aria-labelledby="packages">
-        <h2 id="packages" className="text-3xl sm:text-4xl">
-          Προσφορές &amp; Πακέτα
-        </h2>
-        <p className="mt-3 text-sm text-muted-foreground">
-          Διάλεξε γρήγορα και έλα – χωρίς σκοτούρες.
-        </p>
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          {PACKAGES.map((p) => (
-            <article
-              key={p.name}
-              className={`surface-card relative flex flex-col p-6 ${
-                p.featured ? "border-primary ring-1 ring-primary" : ""
-              }`}
-            >
-              {p.featured && (
-                <span className="absolute -top-3 left-6 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
-                  {p.tagline}
-                </span>
-              )}
-              <h3 className="text-2xl">{p.name}</h3>
-              {!p.featured && (
-                <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
-                  {p.tagline}
-                </p>
-              )}
-              <p className="mt-4 font-display text-4xl text-primary">{p.price}</p>
-              <ul className="mt-4 flex-1 space-y-2 text-sm text-muted-foreground">
-                {p.includes.map((i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <Check className="mt-0.5 size-4 shrink-0 text-primary" />
-                    <span>{i}</span>
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="tel:+302741025156"
-                className="mt-6 inline-flex items-center justify-center gap-2 rounded-md bg-primary px-4 py-2.5 font-semibold text-primary-foreground"
-              >
-                <Phone className="size-4" /> Κλείσε ραντεβού
-              </a>
-            </article>
-          ))}
-        </div>
-      </section>
+
+
 
       <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="services">
-        <h2 id="services" className="text-3xl sm:text-4xl">
+        <h2 id="services" className="section-title text-3xl sm:text-4xl">
           Υπηρεσίες
         </h2>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s) => (
-            <article key={s.title} className="surface-card p-5">
+            <article key={s.title} className="surface-card surface-card-hover p-5">
               <Scissors className="size-5 text-primary" />
               <h3 className="mt-4 text-xl">{s.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
@@ -410,7 +319,7 @@ function Index() {
       </section>
 
       <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="prices">
-        <h2 id="prices" className="text-3xl sm:text-4xl">
+        <h2 id="prices" className="section-title text-3xl sm:text-4xl">
           Τιμοκατάλογος
         </h2>
         <ul className="mt-8 surface-card divide-y divide-border p-2">
@@ -424,75 +333,23 @@ function Index() {
       </section>
 
       <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="gallery">
-        <h2 id="gallery" className="text-3xl sm:text-4xl">
+        <h2 id="gallery" className="section-title text-3xl sm:text-4xl">
           Φωτογραφίες δουλειάς
         </h2>
-        <div className="mt-6 flex flex-wrap gap-2">
-          {CATEGORIES.map((c) => (
-            <button
-              key={c.id}
-              type="button"
-              onClick={() => setCat(c.id)}
-              aria-pressed={cat === c.id}
-              className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
-                cat === c.id
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-border text-muted-foreground hover:bg-secondary"
-              }`}
-            >
-              {c.label}
-            </button>
-          ))}
-        </div>
-        <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {visible.map((g) => (
-            <figure key={g.src} className="surface-card overflow-hidden">
-              <button
-                type="button"
-                onClick={() => setLightbox(g)}
-                className="block w-full"
-                aria-label={`Προβολή φωτογραφίας: ${g.alt}`}
-              >
-                <img
-                  src={g.src}
-                  alt={g.alt}
-                  loading="lazy"
-                  className="aspect-[3/4] w-full object-cover transition-transform duration-300 hover:scale-105"
-                />
-              </button>
+        <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-3">
+          {GALLERY.map((g) => (
+            <figure key={g.src} className="surface-card surface-card-hover overflow-hidden">
+              <img
+                src={g.src}
+                alt={g.alt}
+                loading="lazy"
+                className="aspect-[3/4] w-full object-cover transition-transform duration-500 hover:scale-105"
+              />
             </figure>
           ))}
         </div>
       </section>
 
-      {lightbox !== null && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label="Προβολή φωτογραφίας"
-          onClick={() => setLightbox(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 p-4 backdrop-blur"
-        >
-          <button
-            type="button"
-            onClick={() => setLightbox(null)}
-            aria-label="Κλείσιμο"
-            className="absolute right-4 top-4 rounded-full border border-border p-2 text-foreground"
-          >
-            <X className="size-5" />
-          </button>
-          <figure onClick={(e) => e.stopPropagation()} className="max-h-full">
-            <img
-              src={lightbox.src}
-              alt={lightbox.alt}
-              className="max-h-[80vh] w-auto rounded-md object-contain"
-            />
-            <figcaption className="mt-3 text-center text-sm text-muted-foreground">
-              {lightbox.alt}
-            </figcaption>
-          </figure>
-        </div>
-      )}
 
       <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="hours">
         <div className="grid gap-6 lg:grid-cols-2">
@@ -517,7 +374,7 @@ function Index() {
             </p>
           </div>
 
-          <div className="surface-card overflow-hidden">
+          <div className="surface-card surface-card-hover overflow-hidden">
             <img
               src={storefront.url}
               alt="Η πρόσοψη του Barber Shop Προκόπης στην Κόρινθο"
@@ -557,7 +414,7 @@ function Index() {
       </section>
 
       <section className="mx-auto max-w-5xl px-5 py-8">
-        <div className="surface-card overflow-hidden">
+        <div className="surface-card surface-card-hover overflow-hidden">
           <iframe
             title="Χάρτης – Barber Shop Προκόπης, Κολιάτσου 35, Κόρινθος"
             src="https://www.google.com/maps?q=%CE%9A%CE%BF%CE%BB%CE%B9%CE%AC%CF%84%CF%83%CE%BF%CF%85%2035%2C%20%CE%9A%CF%8C%CF%81%CE%B9%CE%BD%CE%B8%CE%BF%CF%82%2020131&output=embed"
