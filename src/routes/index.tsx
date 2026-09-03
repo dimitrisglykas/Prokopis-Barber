@@ -160,6 +160,14 @@ function Index() {
               <Phone className="size-4" /> Κλείσε ραντεβού · 2741 025156
             </a>
             <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-primary px-6 py-3 font-semibold text-primary transition-colors hover:bg-secondary sm:w-auto"
+            >
+              <Instagram className="size-4" /> Ραντεβού στο Instagram
+            </a>
+            <a
               href="https://maps.google.com/?q=Κολιάτσου+35,+Κόρινθος+20131"
               target="_blank"
               rel="noreferrer"
@@ -169,15 +177,26 @@ function Index() {
             </a>
           </div>
 
-          <div className="mt-10 inline-flex items-center gap-3 rounded-full border border-border bg-card/70 px-5 py-2 backdrop-blur">
-            <span className="font-display text-2xl text-primary">4,8</span>
-            <span className="flex gap-0.5" aria-hidden>
-              {[0, 1, 2, 3, 4].map((i) => (
-                <Star key={i} className="size-4 fill-primary text-primary" />
-              ))}
-            </span>
-            <span className="text-sm text-muted-foreground">72 κριτικές Google</span>
+          <div className="mt-10 flex flex-col items-center gap-3">
+            <div className="inline-flex items-center gap-3 rounded-full border border-border bg-card/70 px-5 py-2 backdrop-blur">
+              <span className="font-display text-2xl text-primary">4,8</span>
+              <span className="flex gap-0.5" aria-hidden>
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <Star key={i} className="size-4 fill-primary text-primary" />
+                ))}
+              </span>
+              <span className="text-sm text-muted-foreground">72 κριτικές Google</span>
+            </div>
+            <a
+              href={REVIEW_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm font-semibold text-primary hover:underline"
+            >
+              Άφησε αξιολόγηση στο Google
+            </a>
           </div>
+
         </div>
       </header>
 
