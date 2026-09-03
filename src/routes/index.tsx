@@ -354,6 +354,10 @@ function Index() {
                 src={g.src}
                 alt={g.alt}
                 loading="lazy"
+                decoding="async"
+                width={900}
+                height={1200}
+                sizes="(min-width: 1024px) 33vw, 50vw"
                 className="aspect-[3/4] w-full object-cover transition-transform duration-500 hover:scale-105"
               />
             </figure>
@@ -390,6 +394,9 @@ function Index() {
               src={storefront.url}
               alt="Η πρόσοψη του Barber Shop Προκόπης στην Κόρινθο"
               loading="lazy"
+              decoding="async"
+              width={1200}
+              height={900}
               className="h-56 w-full object-cover sm:h-72"
             />
             <div className="p-6">
