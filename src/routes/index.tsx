@@ -246,8 +246,15 @@ function Index() {
         <div className="pole-stripes absolute inset-x-0 top-0 h-1.5" />
 
         <div className="relative mx-auto max-w-5xl px-5 pb-16 pt-20 text-center sm:pb-24 sm:pt-28">
+          <img
+            src={logo.url}
+            alt="Λογότυπο Προκόπης Barber Shop, κουρείο στην Κόρινθο"
+            width={128}
+            height={128}
+            className="mx-auto mb-6 size-28 rounded-full sm:size-32"
+          />
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-primary">
-            Est. Κόρινθος · Ελλάδα
+            Est. 1926 · Κόρινθος
           </p>
           <h1 className="mt-5 text-5xl leading-[0.95] sm:text-7xl">
             <span className="text-gold-gradient">Προκόπης Ντερτιλής</span>
