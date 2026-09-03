@@ -1,13 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Phone, MapPin, Star, Clock, Navigation, Scissors } from "lucide-react";
+import { Phone, MapPin, Star, Clock, Navigation, Scissors, Instagram } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
-import storefront from "@/assets/storefront.webp.asset.json";
+import storefront from "@/assets/storefront-new.jpg.asset.json";
 import work1 from "@/assets/work-100056.png.asset.json";
 import work2 from "@/assets/work-100135.png.asset.json";
 import work3 from "@/assets/work-100150.png.asset.json";
 import work4 from "@/assets/work-100159.png.asset.json";
+import work5 from "@/assets/work-mullet.png.asset.json";
+import work6 from "@/assets/work-burst-fade.png.asset.json";
+
+const SITE = "https://prokopis.lovable.app";
+const REVIEW_URL = "https://g.page/r/CSuxeKbN7oEXEBM/review";
+const INSTAGRAM_URL = "https://www.instagram.com/prokopis_barber/";
+const OG_IMAGE = `${SITE}${storefront.url}`;
 
 const GALLERY = [
+  { src: work6.url, alt: "Burst fade με χρώμα – κούρεμα στο κουρείο Προκόπης, Κόρινθος" },
+  { src: work5.url, alt: "Mullet με μαλλιά όγκου – ανδρικό κούρεμα Κόρινθος" },
   { src: work1.url, alt: "Slick back με fade – δουλειά του κουρείου" },
   { src: work2.url, alt: "Textured crop με χαμηλό fade" },
   { src: work3.url, alt: "Mullet με drop fade" },
@@ -15,32 +24,88 @@ const GALLERY = [
 ];
 
 const PRICES = [
-  { title: "Κούρεμα μόνο με μηχανή", price: "5€" },
-  { title: "Ανδρικό κούρεμα", price: "8€ – 10€ – 12€" },
-  { title: "Παιδικό κούρεμα", price: "8€" },
-  { title: "Λούσιμο", price: "Δωρεάν" },
+  { title: "Ανδρικό κούρεμα", price: "10,00€" },
+  { title: "Ανδρικό (μόνο μηχανή)", price: "8,00€" },
+  { title: "Παιδικό κούρεμα", price: "8,00€" },
+  { title: "Καθάρισμα αυχένα / φαβορίτες", price: "2,00€" },
+  { title: "Τριμμάρισμα", price: "5,00€" },
+  { title: "Σχήμα γενειάδας / τριμμάρισμα", price: "5,00€" },
+  { title: "Λούσιμο", price: "ΔΩΡΕΑΝ" },
 ];
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Προκόπης Ντερτιλής Barber Shop | Κουρείο στην Κόρινθο" },
+      { title: "Κουρείο Κόρινθος | Προκόπης Ντερτιλής Barber Shop" },
       {
         name: "description",
         content:
-          "Ανδρικά κουρέματα, ξύρισμα και περιποίηση γενειάδας στην Κόρινθο. Κολιάτσου 35. Βαθμολογία 4,8/5 από 72 κριτικές. Τηλ. 2741 025156.",
+          "Κουρείο στην Κόρινθο, Κολιάτσου 35. Ανδρικά κουρέματα από 8€, fade, γενειάδα, παιδικό 8€, λούσιμο δωρεάν. 4,8/5 από 72 κριτικές. Τηλ. 2741 025156.",
       },
-      { property: "og:title", content: "Προκόπης Ντερτιλής Barber Shop | Κόρινθος" },
+      { property: "og:title", content: "Κουρείο Κόρινθος | Προκόπης Ντερτιλής Barber Shop" },
       {
         property: "og:description",
-        content: "Shear / Shave / Shine. Κουρείο στην Κόρινθο, Κολιάτσου 35. 4,8/5 σε 72 κριτικές.",
+        content:
+          "Ανδρικά κουρέματα, fade, ξύρισμα και περιποίηση γενειάδας στην Κόρινθο. Κολιάτσου 35 · 2741 025156.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE },
+      { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: OG_IMAGE },
+    ],
+    links: [{ rel: "canonical", href: SITE }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "HairSalon",
+          name: "Προκόπης Ντερτιλής Μ. Barber Shop",
+          image: OG_IMAGE,
+          url: SITE,
+          telephone: "+302741025156",
+          priceRange: "€€",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Κολιάτσου 35",
+            addressLocality: "Κόρινθος",
+            postalCode: "20131",
+            addressCountry: "GR",
+          },
+          sameAs: [INSTAGRAM_URL],
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "4.8",
+            reviewCount: "72",
+          },
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday"],
+              opens: "09:00",
+              closes: "14:00",
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday"],
+              opens: "17:00",
+              closes: "21:00",
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Saturday"],
+              opens: "09:00",
+              closes: "17:00",
+            },
+          ],
+        }),
+      },
     ],
   }),
   component: Index,
 });
+
 
 const HOURS = [
   { day: "Δευτέρα", slots: ["Κλειστά"] },
