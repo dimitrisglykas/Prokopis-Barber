@@ -229,9 +229,6 @@ const SERVICES = [
 
 function Index() {
   return (
-
-
-  return (
     <main className="min-h-screen">
       <header className="relative isolate overflow-hidden">
         <img
