@@ -82,13 +82,19 @@ export const Route = createFileRoute("/")({
           openingHoursSpecification: [
             {
               "@type": "OpeningHoursSpecification",
-              dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday"],
+              dayOfWeek: ["Wednesday"],
+              opens: "09:00",
+              closes: "19:00",
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Tuesday", "Thursday", "Friday"],
               opens: "09:00",
               closes: "14:00",
             },
             {
               "@type": "OpeningHoursSpecification",
-              dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday"],
+              dayOfWeek: ["Tuesday", "Thursday", "Friday"],
               opens: "17:00",
               closes: "21:00",
             },
@@ -110,7 +116,7 @@ export const Route = createFileRoute("/")({
 const HOURS = [
   { day: "Δευτέρα", slots: ["Κλειστά"] },
   { day: "Τρίτη", slots: ["9:00 π.μ. – 2:00 μ.μ.", "5:00 – 9:00 μ.μ."] },
-  { day: "Τετάρτη", slots: ["9:00 π.μ. – 2:00 μ.μ.", "5:00 – 9:00 μ.μ."] },
+  { day: "Τετάρτη", slots: ["Από 9:00 π.μ. μέχρι 7:00 μ.μ."] },
   { day: "Πέμπτη", slots: ["9:00 π.μ. – 2:00 μ.μ.", "5:00 – 9:00 μ.μ."] },
   { day: "Παρασκευή", slots: ["9:00 π.μ. – 2:00 μ.μ.", "5:00 – 9:00 μ.μ."] },
   { day: "Σάββατο", slots: ["9:00 π.μ. – 5:00 μ.μ."] },
