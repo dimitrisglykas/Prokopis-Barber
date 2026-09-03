@@ -117,6 +117,7 @@ export const Route = createFileRoute("/")({
           description:
             "Κουρείο στην Κόρινθο με ανδρικά κουρέματα, fade, περιποίηση γενειάδας και παιδικά κουρέματα. Λούσιμο δωρεάν.",
           image: OG_IMAGE,
+          logo: LOGO_URL,
           url: SITE,
           telephone: "+302741025156",
           priceRange: "€",
