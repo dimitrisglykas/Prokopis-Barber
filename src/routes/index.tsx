@@ -304,12 +304,12 @@ function Index() {
 
 
       <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="services">
-        <h2 id="services" className="text-3xl sm:text-4xl">
+        <h2 id="services" className="section-title text-3xl sm:text-4xl">
           Υπηρεσίες
         </h2>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s) => (
-            <article key={s.title} className="surface-card p-5">
+            <article key={s.title} className="surface-card surface-card-hover p-5">
               <Scissors className="size-5 text-primary" />
               <h3 className="mt-4 text-xl">{s.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
@@ -319,7 +319,7 @@ function Index() {
       </section>
 
       <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="prices">
-        <h2 id="prices" className="text-3xl sm:text-4xl">
+        <h2 id="prices" className="section-title text-3xl sm:text-4xl">
           Τιμοκατάλογος
         </h2>
         <ul className="mt-8 surface-card divide-y divide-border p-2">
@@ -333,12 +333,12 @@ function Index() {
       </section>
 
       <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="gallery">
-        <h2 id="gallery" className="text-3xl sm:text-4xl">
+        <h2 id="gallery" className="section-title text-3xl sm:text-4xl">
           Φωτογραφίες δουλειάς
         </h2>
         <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-3">
           {GALLERY.map((g) => (
-            <figure key={g.src} className="surface-card overflow-hidden">
+            <figure key={g.src} className="surface-card surface-card-hover overflow-hidden">
               <img
                 src={g.src}
                 alt={g.alt}
@@ -374,7 +374,7 @@ function Index() {
             </p>
           </div>
 
-          <div className="surface-card overflow-hidden">
+          <div className="surface-card surface-card-hover overflow-hidden">
             <img
               src={storefront.url}
               alt="Η πρόσοψη του Barber Shop Προκόπης στην Κόρινθο"
@@ -414,7 +414,7 @@ function Index() {
       </section>
 
       <section className="mx-auto max-w-5xl px-5 py-8">
-        <div className="surface-card overflow-hidden">
+        <div className="surface-card surface-card-hover overflow-hidden">
           <iframe
             title="Χάρτης – Barber Shop Προκόπης, Κολιάτσου 35, Κόρινθος"
             src="https://www.google.com/maps?q=%CE%9A%CE%BF%CE%BB%CE%B9%CE%AC%CF%84%CF%83%CE%BF%CF%85%2035%2C%20%CE%9A%CF%8C%CF%81%CE%B9%CE%BD%CE%B8%CE%BF%CF%82%2020131&output=embed"
