@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
 import {
   Phone,
   MapPin,
@@ -8,60 +7,45 @@ import {
   Navigation,
   Scissors,
   Instagram,
-  X,
-  Check,
 } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
-import storefront from "@/assets/storefront-new.jpg.asset.json";
-import work1 from "@/assets/work-100056.png.asset.json";
-import work2 from "@/assets/work-100135.png.asset.json";
-import work3 from "@/assets/work-100150.png.asset.json";
-import work4 from "@/assets/work-100159.png.asset.json";
-import work5 from "@/assets/work-mullet.png.asset.json";
-import work6 from "@/assets/work-burst-fade.png.asset.json";
+import storefront from "@/assets/koureio-korinthos-barber-shop-prosopsi-kolliatsou-35.jpg.asset.json";
+import workSlickBack from "@/assets/koureio-korinthos-andriko-kourema-slick-back-fade.png.asset.json";
+import workMachineLow from "@/assets/koureio-korinthos-kourema-me-mixani-low-fade.png.asset.json";
+import workMachineDrop from "@/assets/koureio-korinthos-kourema-me-mixani-drop-fade.png.asset.json";
+import workKids from "@/assets/koureio-korinthos-paidiko-kourema-taper-fade.png.asset.json";
+import workMullet from "@/assets/koureio-korinthos-andriko-kourema-mullet.png.asset.json";
+import workBurstFade from "@/assets/koureio-korinthos-andriko-kourema-burst-fade-vafi.png.asset.json";
 
 const SITE = "https://prokopis.lovable.app";
 const REVIEW_URL = "https://g.page/r/CSuxeKbN7oEXEBM/review";
 const INSTAGRAM_URL = "https://www.instagram.com/prokopis_barber/";
 const OG_IMAGE = `${SITE}${storefront.url}`;
 
-const CATEGORIES = [
-  { id: "all", label: "Όλα" },
-  { id: "andriko", label: "Ανδρικό" },
-  { id: "mixani", label: "Μηχανή" },
-  { id: "paidiko", label: "Παιδικό" },
-] as const;
-
 const GALLERY = [
   {
-    src: work6.url,
-    cat: "andriko",
-    alt: "Burst fade με χρώμα – ανδρικό κούρεμα στο κουρείο Προκόπης, Κόρινθος",
+    src: workBurstFade.url,
+    alt: "Ανδρικό κούρεμα burst fade με βαφή – κουρείο Προκόπης Ντερτιλής, Κόρινθος",
   },
   {
-    src: work5.url,
-    cat: "andriko",
-    alt: "Mullet με όγκο – ανδρικό κούρεμα Κόρινθος",
+    src: workMullet.url,
+    alt: "Ανδρικό κούρεμα mullet με όγκο – barber shop Κόρινθος, Κολιάτσου 35",
   },
   {
-    src: work1.url,
-    cat: "andriko",
-    alt: "Slick back με fade – ανδρικό κούρεμα Κόρινθος",
+    src: workSlickBack.url,
+    alt: "Ανδρικό κούρεμα slick back με fade – κουρείο στην Κόρινθο",
   },
   {
-    src: work2.url,
-    cat: "mixani",
-    alt: "Κούρεμα μόνο με μηχανή, χαμηλό fade – Κόρινθος",
+    src: workMachineLow.url,
+    alt: "Κούρεμα μόνο με μηχανή, low fade – κουρείο Κόρινθος",
   },
   {
-    src: work3.url,
-    cat: "mixani",
-    alt: "Κούρεμα με μηχανή και drop fade – κουρείο Κόρινθος",
+    src: workMachineDrop.url,
+    alt: "Κούρεμα με μηχανή και drop fade – barber shop στην Κόρινθο",
   },
   {
-    src: work4.url,
-    cat: "paidiko",
-    alt: "Παιδικό κούρεμα taper fade σε σγουρά μαλλιά – Κόρινθος",
+    src: workKids.url,
+    alt: "Παιδικό κούρεμα taper fade σε σγουρά μαλλιά – κουρείο Κόρινθος",
   },
 ];
 
@@ -75,33 +59,6 @@ const PRICES = [
   { title: "Λούσιμο", price: "ΔΩΡΕΑΝ" },
 ];
 
-const PACKAGES = [
-  {
-    name: "Μηχανή Express",
-    price: "8,00€",
-    tagline: "Γρήγορα μέσα – έξω",
-    includes: ["Κούρεμα μόνο με μηχανή", "Καθάρισμα αυχένα", "Λούσιμο δωρεάν"],
-    featured: false,
-  },
-  {
-    name: "Full Service",
-    price: "15,00€",
-    tagline: "Το πιο δημοφιλές",
-    includes: [
-      "Ανδρικό κούρεμα με ψαλίδι & fade",
-      "Σχήμα γενειάδας",
-      "Λούσιμο & styling δωρεάν",
-    ],
-    featured: true,
-  },
-  {
-    name: "Πατέρας & Γιος",
-    price: "16,00€",
-    tagline: "Δύο κουρέματα μαζί",
-    includes: ["Ανδρικό κούρεμα", "Παιδικό κούρεμα", "Λούσιμο δωρεάν"],
-    featured: false,
-  },
-];
 
 export const Route = createFileRoute("/")({
   head: () => ({
