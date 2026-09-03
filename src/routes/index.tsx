@@ -1,5 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Phone, MapPin, Star, Clock, Navigation, Scissors, Instagram } from "lucide-react";
+import { useState } from "react";
+import {
+  Phone,
+  MapPin,
+  Star,
+  Clock,
+  Navigation,
+  Scissors,
+  Instagram,
+  X,
+  Check,
+} from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
 import storefront from "@/assets/storefront-new.jpg.asset.json";
 import work1 from "@/assets/work-100056.png.asset.json";
@@ -14,13 +25,44 @@ const REVIEW_URL = "https://g.page/r/CSuxeKbN7oEXEBM/review";
 const INSTAGRAM_URL = "https://www.instagram.com/prokopis_barber/";
 const OG_IMAGE = `${SITE}${storefront.url}`;
 
+const CATEGORIES = [
+  { id: "all", label: "Όλα" },
+  { id: "andriko", label: "Ανδρικό" },
+  { id: "mixani", label: "Μηχανή" },
+  { id: "paidiko", label: "Παιδικό" },
+] as const;
+
 const GALLERY = [
-  { src: work6.url, alt: "Burst fade με χρώμα – κούρεμα στο κουρείο Προκόπης, Κόρινθος" },
-  { src: work5.url, alt: "Mullet με μαλλιά όγκου – ανδρικό κούρεμα Κόρινθος" },
-  { src: work1.url, alt: "Slick back με fade – δουλειά του κουρείου" },
-  { src: work2.url, alt: "Textured crop με χαμηλό fade" },
-  { src: work3.url, alt: "Mullet με drop fade" },
-  { src: work4.url, alt: "Taper fade σε σγουρά μαλλιά" },
+  {
+    src: work6.url,
+    cat: "andriko",
+    alt: "Burst fade με χρώμα – ανδρικό κούρεμα στο κουρείο Προκόπης, Κόρινθος",
+  },
+  {
+    src: work5.url,
+    cat: "andriko",
+    alt: "Mullet με όγκο – ανδρικό κούρεμα Κόρινθος",
+  },
+  {
+    src: work1.url,
+    cat: "andriko",
+    alt: "Slick back με fade – ανδρικό κούρεμα Κόρινθος",
+  },
+  {
+    src: work2.url,
+    cat: "mixani",
+    alt: "Κούρεμα μόνο με μηχανή, χαμηλό fade – Κόρινθος",
+  },
+  {
+    src: work3.url,
+    cat: "mixani",
+    alt: "Κούρεμα με μηχανή και drop fade – κουρείο Κόρινθος",
+  },
+  {
+    src: work4.url,
+    cat: "paidiko",
+    alt: "Παιδικό κούρεμα taper fade σε σγουρά μαλλιά – Κόρινθος",
+  },
 ];
 
 const PRICES = [
@@ -33,25 +75,73 @@ const PRICES = [
   { title: "Λούσιμο", price: "ΔΩΡΕΑΝ" },
 ];
 
+const PACKAGES = [
+  {
+    name: "Μηχανή Express",
+    price: "8,00€",
+    tagline: "Γρήγορα μέσα – έξω",
+    includes: ["Κούρεμα μόνο με μηχανή", "Καθάρισμα αυχένα", "Λούσιμο δωρεάν"],
+    featured: false,
+  },
+  {
+    name: "Full Service",
+    price: "15,00€",
+    tagline: "Το πιο δημοφιλές",
+    includes: [
+      "Ανδρικό κούρεμα με ψαλίδι & fade",
+      "Σχήμα γενειάδας",
+      "Λούσιμο & styling δωρεάν",
+    ],
+    featured: true,
+  },
+  {
+    name: "Πατέρας & Γιος",
+    price: "16,00€",
+    tagline: "Δύο κουρέματα μαζί",
+    includes: ["Ανδρικό κούρεμα", "Παιδικό κούρεμα", "Λούσιμο δωρεάν"],
+    featured: false,
+  },
+];
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Κουρείο Κόρινθος | Προκόπης Ντερτιλής Barber Shop" },
+      {
+        title: "Κουρείο Κόρινθος – Προκόπης Ντερτιλής Barber Shop | Κολιάτσου 35",
+      },
       {
         name: "description",
         content:
-          "Κουρείο στην Κόρινθο, Κολιάτσου 35. Ανδρικά κουρέματα από 8€, fade, γενειάδα, παιδικό 8€, λούσιμο δωρεάν. 4,8/5 από 72 κριτικές. Τηλ. 2741 025156.",
+          "Κουρείο στην Κόρινθο (Κολιάτσου 35). Ανδρικό κούρεμα 10€, μόνο μηχανή 8€, παιδικό 8€, γενειάδα 5€, λούσιμο δωρεάν. 4,8/5 από 72 κριτικές. Τηλ. 2741 025156.",
       },
-      { property: "og:title", content: "Κουρείο Κόρινθος | Προκόπης Ντερτιλής Barber Shop" },
+      { name: "keywords", content: "κουρείο Κόρινθος, barber shop Κόρινθος, ανδρικά κουρέματα Κόρινθος, fade Κόρινθος, παιδικό κούρεμα Κόρινθος" },
+      { name: "geo.region", content: "GR-ESYE31" },
+      { name: "geo.placename", content: "Κόρινθος" },
+      { name: "geo.position", content: "37.9407;22.9327" },
+      {
+        property: "og:title",
+        content: "Κουρείο Κόρινθος – Προκόπης Ντερτιλής Barber Shop",
+      },
       {
         property: "og:description",
         content:
-          "Ανδρικά κουρέματα, fade, ξύρισμα και περιποίηση γενειάδας στην Κόρινθο. Κολιάτσου 35 · 2741 025156.",
+          "Ανδρικά κουρέματα, fade, γενειάδα και παιδικά κουρέματα στην Κόρινθο. Κολιάτσου 35 · 2741 025156 · Λούσιμο δωρεάν.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "el_GR" },
+      { property: "og:site_name", content: "Προκόπης Ντερτιλής Μ. Barber Shop" },
       { property: "og:url", content: SITE },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "twitter:title",
+        content: "Κουρείο Κόρινθος – Προκόπης Ντερτιλής Barber Shop",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Ανδρικά & παιδικά κουρέματα στην Κόρινθο, Κολιάτσου 35. Λούσιμο δωρεάν. 4,8/5 από 72 κριτικές.",
+      },
       { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: SITE }],
@@ -61,23 +151,72 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "HairSalon",
+          "@id": `${SITE}#barbershop`,
           name: "Προκόπης Ντερτιλής Μ. Barber Shop",
+          alternateName: "Κουρείο Προκόπης Κόρινθος",
+          description:
+            "Κουρείο στην Κόρινθο με ανδρικά κουρέματα, fade, περιποίηση γενειάδας και παιδικά κουρέματα. Λούσιμο δωρεάν.",
           image: OG_IMAGE,
           url: SITE,
           telephone: "+302741025156",
-          priceRange: "€€",
+          priceRange: "€",
+          currenciesAccepted: "EUR",
+          paymentAccepted: "Μετρητά, Κάρτα",
+          areaServed: [
+            { "@type": "City", name: "Κόρινθος" },
+            { "@type": "AdministrativeArea", name: "Νομός Κορινθίας" },
+          ],
           address: {
             "@type": "PostalAddress",
             streetAddress: "Κολιάτσου 35",
             addressLocality: "Κόρινθος",
+            addressRegion: "Κορινθία",
             postalCode: "20131",
             addressCountry: "GR",
           },
-          sameAs: [INSTAGRAM_URL],
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: 37.9407,
+            longitude: 22.9327,
+          },
+          contactPoint: [
+            {
+              "@type": "ContactPoint",
+              telephone: "+302741025156",
+              contactType: "Ραντεβού",
+              areaServed: "GR",
+              availableLanguage: ["el", "en"],
+            },
+          ],
+          sameAs: [INSTAGRAM_URL, REVIEW_URL],
           aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: "4.8",
             reviewCount: "72",
+          },
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Τιμοκατάλογος κουρείου",
+            itemListElement: [
+              { name: "Ανδρικό κούρεμα", price: "10.00" },
+              { name: "Ανδρικό κούρεμα (μόνο μηχανή)", price: "8.00" },
+              { name: "Παιδικό κούρεμα", price: "8.00" },
+              { name: "Καθάρισμα αυχένα / φαβορίτες", price: "2.00" },
+              { name: "Τριμμάρισμα", price: "5.00" },
+              { name: "Σχήμα γενειάδας", price: "5.00" },
+              { name: "Λούσιμο", price: "0.00" },
+            ].map((s) => ({
+              "@type": "Offer",
+              price: s.price,
+              priceCurrency: "EUR",
+              itemOffered: {
+                "@type": "Service",
+                name: s.name,
+                serviceType: "Κουρείο",
+                provider: { "@id": `${SITE}#barbershop` },
+                areaServed: { "@type": "City", name: "Κόρινθος" },
+              },
+            })),
           },
           openingHoursSpecification: [
             {
@@ -112,11 +251,10 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-
 const HOURS = [
   { day: "Δευτέρα", slots: ["Κλειστά"] },
   { day: "Τρίτη", slots: ["9:00 π.μ. – 2:00 μ.μ.", "5:00 – 9:00 μ.μ."] },
-  { day: "Τετάρτη", slots: ["Από 9:00 π.μ. μέχρι 7:00 μ.μ."] },
+  { day: "Τετάρτη", slots: ["9:00 π.μ. – 7:00 μ.μ."] },
   { day: "Πέμπτη", slots: ["9:00 π.μ. – 2:00 μ.μ.", "5:00 – 9:00 μ.μ."] },
   { day: "Παρασκευή", slots: ["9:00 π.μ. – 2:00 μ.μ.", "5:00 – 9:00 μ.μ."] },
   { day: "Σάββατο", slots: ["9:00 π.μ. – 5:00 μ.μ."] },
@@ -133,6 +271,11 @@ const SERVICES = [
 ];
 
 function Index() {
+  const [cat, setCat] = useState<string>("all");
+  const [lightbox, setLightbox] = useState<(typeof GALLERY)[number] | null>(null);
+
+  const visible = GALLERY.filter((g) => cat === "all" || g.cat === cat);
+
   return (
     <main className="min-h-screen">
       <header className="relative isolate overflow-hidden">
@@ -155,7 +298,7 @@ function Index() {
             <span className="mt-2 block text-foreground">Barber Shop</span>
           </h1>
           <p className="mx-auto mt-5 max-w-md text-base text-muted-foreground sm:text-lg">
-            Shear / Shave / Shine. Κλασική τεχνική κουρέα με σύγχρονο styling.
+            Κουρείο στην Κόρινθο – Κολιάτσου 35. Κλασική τεχνική κουρέα με σύγχρονο styling.
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -202,11 +345,56 @@ function Index() {
               Άφησε αξιολόγηση στο Google
             </a>
           </div>
-
         </div>
       </header>
 
-      <section className="mx-auto max-w-5xl px-5 py-16" aria-labelledby="services">
+      <section className="mx-auto max-w-5xl px-5 py-16" aria-labelledby="packages">
+        <h2 id="packages" className="text-3xl sm:text-4xl">
+          Προσφορές &amp; Πακέτα
+        </h2>
+        <p className="mt-3 text-sm text-muted-foreground">
+          Διάλεξε γρήγορα και έλα – χωρίς σκοτούρες.
+        </p>
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          {PACKAGES.map((p) => (
+            <article
+              key={p.name}
+              className={`surface-card relative flex flex-col p-6 ${
+                p.featured ? "border-primary ring-1 ring-primary" : ""
+              }`}
+            >
+              {p.featured && (
+                <span className="absolute -top-3 left-6 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
+                  {p.tagline}
+                </span>
+              )}
+              <h3 className="text-2xl">{p.name}</h3>
+              {!p.featured && (
+                <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
+                  {p.tagline}
+                </p>
+              )}
+              <p className="mt-4 font-display text-4xl text-primary">{p.price}</p>
+              <ul className="mt-4 flex-1 space-y-2 text-sm text-muted-foreground">
+                {p.includes.map((i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <Check className="mt-0.5 size-4 shrink-0 text-primary" />
+                    <span>{i}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="tel:+302741025156"
+                className="mt-6 inline-flex items-center justify-center gap-2 rounded-md bg-primary px-4 py-2.5 font-semibold text-primary-foreground"
+              >
+                <Phone className="size-4" /> Κλείσε ραντεβού
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="services">
         <h2 id="services" className="text-3xl sm:text-4xl">
           Υπηρεσίες
         </h2>
@@ -239,20 +427,72 @@ function Index() {
         <h2 id="gallery" className="text-3xl sm:text-4xl">
           Φωτογραφίες δουλειάς
         </h2>
-        <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {GALLERY.map((g) => (
+        <div className="mt-6 flex flex-wrap gap-2">
+          {CATEGORIES.map((c) => (
+            <button
+              key={c.id}
+              type="button"
+              onClick={() => setCat(c.id)}
+              aria-pressed={cat === c.id}
+              className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
+                cat === c.id
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border text-muted-foreground hover:bg-secondary"
+              }`}
+            >
+              {c.label}
+            </button>
+          ))}
+        </div>
+        <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          {visible.map((g) => (
             <figure key={g.src} className="surface-card overflow-hidden">
-              <img
-                src={g.src}
-                alt={g.alt}
-                loading="lazy"
-                className="aspect-[3/4] w-full object-cover"
-              />
+              <button
+                type="button"
+                onClick={() => setLightbox(g)}
+                className="block w-full"
+                aria-label={`Προβολή φωτογραφίας: ${g.alt}`}
+              >
+                <img
+                  src={g.src}
+                  alt={g.alt}
+                  loading="lazy"
+                  className="aspect-[3/4] w-full object-cover transition-transform duration-300 hover:scale-105"
+                />
+              </button>
             </figure>
           ))}
         </div>
       </section>
 
+      {lightbox !== null && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Προβολή φωτογραφίας"
+          onClick={() => setLightbox(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 p-4 backdrop-blur"
+        >
+          <button
+            type="button"
+            onClick={() => setLightbox(null)}
+            aria-label="Κλείσιμο"
+            className="absolute right-4 top-4 rounded-full border border-border p-2 text-foreground"
+          >
+            <X className="size-5" />
+          </button>
+          <figure onClick={(e) => e.stopPropagation()} className="max-h-full">
+            <img
+              src={lightbox.src}
+              alt={lightbox.alt}
+              className="max-h-[80vh] w-auto rounded-md object-contain"
+            />
+            <figcaption className="mt-3 text-center text-sm text-muted-foreground">
+              {lightbox.alt}
+            </figcaption>
+          </figure>
+        </div>
+      )}
 
       <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="hours">
         <div className="grid gap-6 lg:grid-cols-2">
@@ -311,7 +551,6 @@ function Index() {
               >
                 Άφησε αξιολόγηση στο Google
               </a>
-
             </div>
           </div>
         </div>
