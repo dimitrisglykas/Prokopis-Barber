@@ -18,6 +18,7 @@ import workMachineDrop from "@/assets/koureio-korinthos-kourema-me-mixani-drop-f
 import workKids from "@/assets/koureio-korinthos-paidiko-kourema-taper-fade.webp.asset.json";
 import workBuzzCut from "@/assets/koureio-korinthos-andriko-kourema-buzz-cut.webp.asset.json";
 import workBurstFade from "@/assets/koureio-korinthos-andriko-kourema-burst-fade-vafi.webp.asset.json";
+import prokopisPortrait from "@/assets/koureio-korinthos-prokopis-derdilis-prosopsi-katastimatos.webp.asset.json";
 
 const SITE = "https://prokopis.lovable.app";
 const REVIEW_URL = "https://g.page/r/CSuxeKbN7oEXEBM/review";
@@ -380,6 +381,57 @@ function Index() {
           ))}
         </div>
       </section>
+
+      <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="istoria">
+        <h2 id="istoria" className="section-title text-3xl sm:text-4xl">
+          Η Ιστορία του Prokopis Barbershop
+        </h2>
+        <div className="mt-8 grid gap-8 lg:grid-cols-[2fr_1fr]">
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Η διαδρομή του Prokopis Barbershop στηρίζεται στην πολυετή τριβή με την ανδρική
+              περιποίηση και σε μια βαθιά οικογενειακή παράδοση.
+            </p>
+            <p>
+              Ο Προκόπης Ντερτιλής ολοκλήρωσε τις σπουδές του στη σχολή Αμάραντος το 2005,
+              εγκαινιάζοντας την επαγγελματική του πορεία στον χώρο. Στη συνέχεια, εμπλούτισε τις
+              γνώσεις του παρακολουθώντας εξειδικευμένα σεμινάρια πάνω στις τεχνικές του modern
+              &amp; classic barbering, ενώ η θητεία του στο κομμωτήριο Nicolas στην Αθήνα
+              λειτούργησε ως καθοριστικός σταθμός για την απόκτηση τεχνογνωσίας υψηλού επιπέδου.
+            </p>
+            <p>
+              Το πρώτο του επιχειρηματικό βήμα έγινε το 2009 σε χώρο εντός στοάς, για να
+              ακολουθήσει το 2016 η δημιουργία του σημερινού Barbershop, ενός σύγχρονου χώρου
+              αφιερωμένου αποκλειστικά στην ανδρική περιποίηση.
+            </p>
+            <p>
+              Η ενασχόλησή του με το επάγγελμα αποτελεί φυσική εξέλιξη μιας οικογενειακής ιστορίας
+              που μετρά τέσσερις γενιές. Τόσο ο προπάππους όσο και ο παππούς του διατηρούσαν το
+              δικό τους παραδοσιακό κουρείο στην οδό Κύπρου στην Κόρινθο. Αυτές οι καταβολές
+              ενέπνευσαν τον Προκόπη να συνεχίσει την οικογενειακή τέχνη, προσαρμόζοντάς την στις
+              απαιτήσεις του σήμερα.
+            </p>
+            <p>
+              Με έμφαση στη συνέπεια και την τεχνική κατάρτιση, το Prokopis Barbershop αποτελεί
+              πλέον σημείο αναφοράς για την ανδρική φροντίδα στην Κόρινθο.
+            </p>
+          </div>
+          <figure className="surface-card surface-card-hover overflow-hidden">
+            <img
+              src={prokopisPortrait.url}
+              alt="Ο Προκόπης Ντερτιλής μπροστά στο κουρείο του στην Κολιάτσου 35, Κόρινθος"
+              loading="lazy"
+              decoding="async"
+              width={900}
+              height={1199}
+              sizes="(min-width: 1024px) 33vw, 100vw"
+              className="aspect-[3/4] w-full object-cover"
+            />
+          </figure>
+        </div>
+      </section>
+
+
 
 
       <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="hours">
