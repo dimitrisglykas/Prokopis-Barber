@@ -80,6 +80,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Προκόπης Ντερτιλής M. Barber Shop" },
       { name: "description", content: "Κουρείο στην Κόρινθο – Κολιάτσου 35. Ανδρικά & παιδικά κουρέματα, fade, γενειάδα. Λούσιμο δωρεάν." },
       { name: "author", content: "Προκόπης Ντερτιλής M. Barber Shop" },
+      { name: "google-site-verification", content: "cgzSq0Fs2lBPQYbH085YGTUVCeiy9GlnRz0sh_ii-0Y" },
       { property: "og:title", content: "Προκόπης Ντερτιλής M. Barber Shop" },
       { property: "og:description", content: "Κουρείο στην Κόρινθο – Κολιάτσου 35. Ανδρικά & παιδικά κουρέματα, fade, γενειάδα. Λούσιμο δωρεάν." },
       { property: "og:type", content: "website" },
