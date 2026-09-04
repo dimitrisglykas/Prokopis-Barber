@@ -8,50 +8,45 @@ import {
   Scissors,
   Instagram,
 } from "lucide-react";
-import heroImg from "@/assets/hero.jpg";
+const heroImg = "/images/hero.jpg";
+const IMG = "/images";
 
-import storefront from "@/assets/koureio-korinthos-barber-shop-prosopsi-kolliatsou-35.webp.asset.json";
-import ogImage from "@/assets/og-prokopis-barber-shop-korinthos.jpg.asset.json";
-import workSlickBack from "@/assets/koureio-korinthos-andriko-kourema-slick-back-fade.webp.asset.json";
-import workMachineLow from "@/assets/koureio-korinthos-kourema-me-mixani-low-fade.webp.asset.json";
-import workMachineDrop from "@/assets/koureio-korinthos-kourema-me-mixani-drop-fade.webp.asset.json";
-import workKids from "@/assets/koureio-korinthos-paidiko-kourema-taper-fade.webp.asset.json";
-import workBuzzCut from "@/assets/koureio-korinthos-andriko-kourema-buzz-cut.webp.asset.json";
-import workBurstFade from "@/assets/koureio-korinthos-andriko-kourema-burst-fade-vafi.webp.asset.json";
-import prokopisPortrait from "@/assets/koureio-korinthos-prokopis-derdilis-prosopsi-katastimatos.webp.asset.json";
+const storefront = `${IMG}/koureio-korinthos-barber-shop-prosopsi-kolliatsou-35.webp`;
+const prokopisPortrait = `${IMG}/koureio-korinthos-prokopis-derdilis-prosopsi-katastimatos.webp`;
 
 const SITE = "https://prokopis.lovable.app";
 const REVIEW_URL = "https://g.page/r/CSuxeKbN7oEXEBM/review";
 const INSTAGRAM_URL = "https://www.instagram.com/prokopis_barber/";
-const OG_IMAGE = `${SITE}${ogImage.url}`;
+const OG_IMAGE = `${SITE}${IMG}/og-prokopis-barber-shop-korinthos.jpg`;
 const LOGO_URL = `${SITE}/logo.png`;
 
 const GALLERY = [
   {
-    src: workBurstFade.url,
+    src: `${IMG}/koureio-korinthos-andriko-kourema-burst-fade-vafi.webp`,
     alt: "Ανδρικό κούρεμα burst fade με βαφή – κουρείο Προκόπης Ντερτιλής, Κόρινθος",
   },
   {
-    src: workBuzzCut.url,
+    src: `${IMG}/koureio-korinthos-andriko-kourema-buzz-cut.webp`,
     alt: "Ανδρικό κούρεμα buzz cut χωρίς fade – κουρείο Προκόπης Ντερτιλής, Κόρινθος",
   },
   {
-    src: workSlickBack.url,
+    src: `${IMG}/koureio-korinthos-andriko-kourema-slick-back-fade.webp`,
     alt: "Ανδρικό κούρεμα slick back με fade – κουρείο στην Κόρινθο",
   },
   {
-    src: workMachineLow.url,
+    src: `${IMG}/koureio-korinthos-kourema-me-mixani-low-fade.webp`,
     alt: "Κούρεμα μόνο με μηχανή, low fade – κουρείο Κόρινθος",
   },
   {
-    src: workMachineDrop.url,
+    src: `${IMG}/koureio-korinthos-kourema-me-mixani-drop-fade.webp`,
     alt: "Κούρεμα με μηχανή και drop fade – barber shop στην Κόρινθο",
   },
   {
-    src: workKids.url,
+    src: `${IMG}/koureio-korinthos-paidiko-kourema-taper-fade.webp`,
     alt: "Παιδικό κούρεμα taper fade σε σγουρά μαλλιά – κουρείο Κόρινθος",
   },
 ];
+
 
 const PRICES = [
   { title: "Ανδρικό κούρεμα", price: "10,00€" },
@@ -418,7 +413,7 @@ function Index() {
           </div>
           <figure className="surface-card surface-card-hover overflow-hidden">
             <img
-              src={prokopisPortrait.url}
+              src={prokopisPortrait}
               alt="Ο Προκόπης Ντερτιλής μπροστά στο κουρείο του στην Κολιάτσου 35, Κόρινθος"
               loading="lazy"
               decoding="async"
@@ -459,12 +454,12 @@ function Index() {
 
           <div className="surface-card surface-card-hover overflow-hidden">
             <img
-              src={storefront.url}
+              src={storefront}
               alt="Η πρόσοψη του Barber Shop Προκόπης στην Κόρινθο"
               loading="lazy"
               decoding="async"
               width={1200}
-              height={900}
+              height={676}
               className="h-56 w-full object-cover sm:h-72"
             />
             <div className="p-6">
