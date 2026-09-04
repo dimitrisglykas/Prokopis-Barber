@@ -102,6 +102,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "shortcut icon", href: "/favicon.ico?v=4" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png?v=4", sizes: "180x180" },
     ],
+    scripts: [
+      { src: "https://cdn.botpress.cloud/webchat/v5.0/inject.js" },
+      { src: "https://files.bpcontent.cloud/2026/09/04/06/20260904064815-YMDQVWR8.js", defer: true },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
