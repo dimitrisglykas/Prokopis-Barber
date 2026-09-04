@@ -23,7 +23,7 @@ const SITE = "https://prokopis.lovable.app";
 const REVIEW_URL = "https://g.page/r/CSuxeKbN7oEXEBM/review";
 const INSTAGRAM_URL = "https://www.instagram.com/prokopis_barber/";
 const OG_IMAGE = `${SITE}${ogImage.url}`;
-const LOGO_URL = `${SITE}${logo.url}`;
+const LOGO_URL = `${SITE}/logo.png`;
 
 const GALLERY = [
   {
