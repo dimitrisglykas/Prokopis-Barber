@@ -18,6 +18,7 @@ import workMachineDrop from "@/assets/koureio-korinthos-kourema-me-mixani-drop-f
 import workKids from "@/assets/koureio-korinthos-paidiko-kourema-taper-fade.webp.asset.json";
 import workBuzzCut from "@/assets/koureio-korinthos-andriko-kourema-buzz-cut.webp.asset.json";
 import workBurstFade from "@/assets/koureio-korinthos-andriko-kourema-burst-fade-vafi.webp.asset.json";
+import prokopisPortrait from "@/assets/koureio-korinthos-prokopis-derdilis-prosopsi-katastimatos.webp.asset.json";
 
 const SITE = "https://prokopis.lovable.app";
 const REVIEW_URL = "https://g.page/r/CSuxeKbN7oEXEBM/review";
