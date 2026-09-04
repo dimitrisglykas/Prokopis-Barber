@@ -413,7 +413,7 @@ function Index() {
           </div>
           <figure className="surface-card surface-card-hover overflow-hidden">
             <img
-              src={prokopisPortrait.url}
+              src={prokopisPortrait}
               alt="Ο Προκόπης Ντερτιλής μπροστά στο κουρείο του στην Κολιάτσου 35, Κόρινθος"
               loading="lazy"
               decoding="async"
@@ -454,12 +454,12 @@ function Index() {
 
           <div className="surface-card surface-card-hover overflow-hidden">
             <img
-              src={storefront.url}
+              src={storefront}
               alt="Η πρόσοψη του Barber Shop Προκόπης στην Κόρινθο"
               loading="lazy"
               decoding="async"
               width={1200}
-              height={900}
+              height={676}
               className="h-56 w-full object-cover sm:h-72"
             />
             <div className="p-6">
