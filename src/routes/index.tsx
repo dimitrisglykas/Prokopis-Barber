@@ -9,7 +9,7 @@ import {
   Instagram,
 } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
-import logo from "@/assets/logo-prokopis-barber-shop.png.asset.json";
+
 import storefront from "@/assets/koureio-korinthos-barber-shop-prosopsi-kolliatsou-35.webp.asset.json";
 import ogImage from "@/assets/og-prokopis-barber-shop-korinthos.jpg.asset.json";
 import workSlickBack from "@/assets/koureio-korinthos-andriko-kourema-slick-back-fade.webp.asset.json";
