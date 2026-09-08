@@ -8,7 +8,7 @@ import {
   Scissors,
   Instagram,
 } from "lucide-react";
-const heroImg = "/images/hero.jpg";
+
 const IMG = "/images";
 
 const storefront = `${IMG}/koureio-korinthos-barber-shop-prosopsi-kolliatsou-35.webp`;
