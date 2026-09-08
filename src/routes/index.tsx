@@ -8,7 +8,7 @@ import {
   Scissors,
   Instagram,
 } from "lucide-react";
-const heroImg = "/images/hero.jpg";
+
 const IMG = "/images";
 
 const storefront = `${IMG}/koureio-korinthos-barber-shop-prosopsi-kolliatsou-35.webp`;
@@ -245,15 +245,20 @@ function Index() {
   return (
     <main className="min-h-screen">
       <header className="relative isolate overflow-hidden">
-        <img
-          src={heroImg}
-          alt="Εσωτερικό κλασικού κουρείου με φωτισμό και καρέκλα barber"
-          width={1600}
-          height={1000}
+        <video
           className="absolute inset-0 h-full w-full object-cover opacity-40"
+          src="/media/hero-prokopis-barber-shop-korinthos.mp4"
+          poster="/media/hero-poster.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label="Βίντεο από το κουρείο Προκόπης Ντερτιλής στην Κόρινθο"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/80 to-background" />
         <div className="pole-stripes absolute inset-x-0 top-0 h-1.5" />
+
 
         <div className="relative mx-auto max-w-5xl px-5 pb-16 pt-20 text-center sm:pb-24 sm:pt-28">
           <img

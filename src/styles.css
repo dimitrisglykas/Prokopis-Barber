@@ -120,3 +120,36 @@
     oklch(0.98 0 0) 24px 32px
   );
 }
+
+/* --- Botpress webchat: μέγεθος & theme στο ύφος του site --- */
+#webchat .bpFab {
+  width: 52px;
+  height: 52px;
+  right: 18px;
+  bottom: 18px;
+  background-color: oklch(0.72 0.14 72);
+  box-shadow: 0 8px 24px oklch(0 0 0 / 0.45);
+}
+
+#webchat .bpWebchat {
+  right: 18px;
+  bottom: 84px;
+  width: 100%;
+  max-width: 380px;
+  height: min(70vh, 620px);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px oklch(0 0 0 / 0.55);
+  font-family: "Barlow", system-ui, sans-serif;
+}
+
+@media (max-width: 480px) {
+  #webchat .bpWebchat {
+    right: 10px;
+    left: 10px;
+    bottom: 78px;
+    max-width: none;
+    width: auto;
+    height: min(72vh, 560px);
+  }
+}
