@@ -153,3 +153,11 @@
     height: min(72vh, 560px);
   }
 }
+
+/* Το κενό fab-root του Botpress μπλοκάρει κλικ – το ουδετεροποιούμε */
+.bpChatContainer #fab-root {
+  pointer-events: none;
+}
+.bpChatContainer #fab-root * {
+  pointer-events: auto;
+}
