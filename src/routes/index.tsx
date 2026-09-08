@@ -63,12 +63,12 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "Κουρείο Κόρινθος – Προκόπης Ντερτιλής Barber Shop | Κολιάτσου 35",
+        title: "Κουρείο Κόρινθος | Κολιάτσου 35 – Prokopis Barber Shop",
       },
       {
         name: "description",
         content:
-          "Κουρείο στην Κόρινθο (Κολιάτσου 35). Ανδρικό κούρεμα 10€, μόνο μηχανή 8€, παιδικό 8€, γενειάδα 5€, λούσιμο δωρεάν. 4,8/5 από 72 κριτικές. Τηλ. 2741 025156.",
+          "Κουρείο στην Κόρινθο, Κολιάτσου 35. Ανδρικό 10€, μόνο μηχανή 8€, παιδικό 8€, γενειάδα 5€, λούσιμο δωρεάν. Τρ–Πα 9:00–14:00 & 17:00–21:00, Τε 9:00–19:00, Σα 9:00–17:00. Τηλ. 2741 025156.",
       },
       { name: "keywords", content: "κουρείο Κόρινθος, barber shop Κόρινθος, ανδρικά κουρέματα Κόρινθος, fade Κόρινθος, παιδικό κούρεμα Κόρινθος" },
       { name: "geo.region", content: "GR-ESYE31" },
@@ -76,12 +76,12 @@ export const Route = createFileRoute("/")({
       { name: "geo.position", content: "37.9407;22.9327" },
       {
         property: "og:title",
-        content: "Κουρείο Κόρινθος – Προκόπης Ντερτιλής Barber Shop",
+        content: "Κουρείο Κόρινθος – Prokopis Barber Shop | Κολιάτσου 35",
       },
       {
         property: "og:description",
         content:
-          "Ανδρικά κουρέματα, fade, γενειάδα και παιδικά κουρέματα στην Κόρινθο. Κολιάτσου 35 · 2741 025156 · Λούσιμο δωρεάν.",
+          "Ανδρικά & παιδικά κουρέματα, fade και γενειάδα στην Κόρινθο. Ανδρικό 10€, μηχανή 8€, παιδικό 8€, λούσιμο δωρεάν. Τρ–Πα 9:00–14:00 & 17:00–21:00, Τε 9:00–19:00, Σα 9:00–17:00. Κολιάτσου 35 · 2741 025156.",
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "el_GR" },
@@ -95,25 +95,26 @@ export const Route = createFileRoute("/")({
       {
         property: "og:image:alt",
         content:
-          "Λογότυπο Προκόπης Ντερτιλής Μ. Barber Shop – Κουρείο στην Κόρινθο, Κολιάτσου 35",
+          "Προκόπης Ντερτιλής Μ. Barber Shop – Κουρείο στην Κόρινθο, Κολιάτσου 35",
       },
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content: "Κουρείο Κόρινθος – Προκόπης Ντερτιλής Barber Shop",
+        content: "Κουρείο Κόρινθος – Prokopis Barber Shop | Κολιάτσου 35",
       },
       {
         name: "twitter:description",
         content:
-          "Ανδρικά & παιδικά κουρέματα στην Κόρινθο, Κολιάτσου 35. Λούσιμο δωρεάν. 4,8/5 από 72 κριτικές. Τηλ. 2741 025156.",
+          "Κολιάτσου 35, Κόρινθος · 2741 025156. Ανδρικό 10€, μηχανή 8€, παιδικό 8€, λούσιμο δωρεάν. Τρ–Πα 9:00–14:00 & 17:00–21:00, Τε 9:00–19:00, Σα 9:00–17:00.",
       },
       { name: "twitter:image", content: OG_IMAGE },
       {
         name: "twitter:image:alt",
         content:
-          "Λογότυπο Προκόπης Ντερτιλής Μ. Barber Shop – Κουρείο Κόρινθος",
+          "Κουρείο Προκόπης Ντερτιλής – Κόρινθος, Κολιάτσου 35",
       },
     ],
+
     links: [{ rel: "canonical", href: SITE }],
     scripts: [
       {
@@ -245,17 +246,16 @@ function Index() {
   return (
     <main className="min-h-screen">
       <header className="relative isolate overflow-hidden">
-        <video
-          className="absolute inset-0 h-full w-full object-cover opacity-40"
-          src="/media/hero-prokopis-barber-shop-korinthos.mp4"
-          poster="/media/hero-poster.jpg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-label="Βίντεο από το κουρείο Προκόπης Ντερτιλής στην Κόρινθο"
+        <img
+          src={storefront}
+          alt="Πρόσοψη κουρείου Προκόπης Ντερτιλής – Κολιάτσου 35, Κόρινθος"
+          width={1200}
+          height={676}
+          loading="eager"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover opacity-45"
         />
+
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/80 to-background" />
         <div className="pole-stripes absolute inset-x-0 top-0 h-1.5" />
 

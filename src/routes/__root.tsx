@@ -104,7 +104,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     scripts: [
       { src: "https://cdn.botpress.cloud/webchat/v5.0/inject.js" },
-      { src: "/botpress-config.js" },
       { src: "https://files.bpcontent.cloud/2026/09/04/06/20260904064815-YMDQVWR8.js", defer: true },
     ],
 
