@@ -7,8 +7,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, useState, type ReactNode } from "react";
-import { MessageCircle } from "lucide-react";
+import { useEffect, type ReactNode } from "react";
 
 
 import appCss from "../styles.css?url";
@@ -105,7 +104,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png?v=4", sizes: "180x180" },
     ],
     scripts: [
-      { src: "https://cdn.botpress.cloud/webchat/v5.0/inject.js" },
+      { src: "https://cdn.botpress.cloud/webchat/v5.0/inject.js", defer: true },
       { src: "https://files.bpcontent.cloud/2026/09/04/06/20260904064815-YMDQVWR8.js", defer: true },
     ],
 
@@ -130,37 +129,6 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
-declare global {
-  interface Window {
-    botpress?: { open?: () => void; close?: () => void };
-  }
-}
-
-function ChatLauncher() {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <button
-      type="button"
-      aria-label={open ? "Κλείσιμο συνομιλίας" : "Άνοιγμα συνομιλίας"}
-      onClick={() => {
-        const bp = typeof window !== "undefined" ? window.botpress : undefined;
-        if (!bp) return;
-        if (open) {
-          bp.close?.();
-          setOpen(false);
-        } else {
-          bp.open?.();
-          setOpen(true);
-        }
-      }}
-      className="fixed bottom-5 right-5 z-50 inline-flex size-14 items-center justify-center rounded-full border border-primary/40 bg-primary text-primary-foreground shadow-lg transition-transform hover:scale-105"
-    >
-      <MessageCircle className="size-6" />
-    </button>
-  );
-}
-
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
@@ -168,7 +136,6 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
-      <ChatLauncher />
     </QueryClientProvider>
   );
 }

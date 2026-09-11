@@ -13,6 +13,28 @@ const IMG = "/images";
 
 const storefront = `${IMG}/koureio-korinthos-barber-shop-prosopsi-kolliatsou-35.webp`;
 const prokopisPortrait = `${IMG}/koureio-korinthos-prokopis-derdilis-prosopsi-katastimatos.webp`;
+const historyPortrait = `${IMG}/istoria-prokopis-barbershop-korinthos.webp`;
+
+const SHOP_IMAGES = [
+  {
+    src: storefront,
+    alt: "Η φωτισμένη πρόσοψη του Prokopis Barbershop στην Κολιάτσου 35, Κόρινθος",
+    width: 1200,
+    height: 676,
+  },
+  {
+    src: `${IMG}/xoros-koureiou-prokopis-korinthos-eksoteriko.webp`,
+    alt: "Ο εξωτερικός χώρος του κουρείου Prokopis στην Κόρινθο",
+    width: 1200,
+    height: 1497,
+  },
+  {
+    src: `${IMG}/xoros-koureiou-prokopis-korinthos-prosopsi.webp`,
+    alt: "Η πρόσοψη και η είσοδος του Prokopis Barbershop στην Κόρινθο",
+    width: 720,
+    height: 540,
+  },
+];
 
 const SITE = "https://prokopis.lovable.app";
 const REVIEW_URL = "https://g.page/r/CSuxeKbN7oEXEBM/review";
@@ -416,23 +438,56 @@ function Index() {
               πλέον σημείο αναφοράς για την ανδρική φροντίδα στην Κόρινθο.
             </p>
           </div>
-          <figure className="surface-card surface-card-hover overflow-hidden">
-            <img
-              src={prokopisPortrait}
-              alt="Ο Προκόπης Ντερτιλής μπροστά στο κουρείο του στην Κολιάτσου 35, Κόρινθος"
-              loading="lazy"
-              decoding="async"
-              width={900}
-              height={1199}
-              sizes="(min-width: 1024px) 33vw, 100vw"
-              className="aspect-[3/4] w-full object-cover"
-            />
-          </figure>
+          <div className="grid grid-cols-2 gap-3 lg:grid-cols-1">
+            <figure className="surface-card surface-card-hover overflow-hidden">
+              <img
+                src={historyPortrait}
+                alt="Ο Προκόπης Ντερτιλής μπροστά στο Prokopis Barbershop στην Κόρινθο"
+                loading="lazy"
+                decoding="async"
+                width={900}
+                height={1198}
+                sizes="(min-width: 1024px) 33vw, 50vw"
+                className="aspect-[3/4] w-full object-cover"
+              />
+            </figure>
+            <figure className="surface-card surface-card-hover overflow-hidden">
+              <img
+                src={prokopisPortrait}
+                alt="Ο Προκόπης Ντερτιλής στην είσοδο του κουρείου του στην Κολιάτσου 35, Κόρινθος"
+                loading="lazy"
+                decoding="async"
+                width={900}
+                height={1199}
+                sizes="(min-width: 1024px) 33vw, 50vw"
+                className="aspect-[3/4] w-full object-cover"
+              />
+            </figure>
+          </div>
         </div>
       </section>
 
-
-
+      <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="shop-space">
+        <h2 id="shop-space" className="section-title text-3xl sm:text-4xl">
+          Ο χώρος του κουρείου
+        </h2>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {SHOP_IMAGES.map((image, index) => (
+            <figure key={image.src} className="surface-card surface-card-hover overflow-hidden">
+              <img
+                src={image.src}
+                alt={image.alt}
+                loading="lazy"
+                decoding="async"
+                width={image.width}
+                height={image.height}
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                className={`w-full object-cover transition-transform duration-500 hover:scale-105 ${index === 0 ? "aspect-[4/3]" : "aspect-[3/4]"}`}
+              />
+            </figure>
+          ))}
+        </div>
+      </section>
 
       <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="hours">
         <div className="grid gap-6 lg:grid-cols-2">
