@@ -12,29 +12,8 @@ import {
 const IMG = "/images";
 
 const storefront = `${IMG}/koureio-korinthos-barber-shop-prosopsi-kolliatsou-35.webp`;
-const prokopisPortrait = `${IMG}/koureio-korinthos-prokopis-derdilis-prosopsi-katastimatos.webp`;
 const historyPortrait = `${IMG}/istoria-prokopis-barbershop-korinthos.webp`;
 
-const SHOP_IMAGES = [
-  {
-    src: storefront,
-    alt: "Η φωτισμένη πρόσοψη του Prokopis Barbershop στην Κολιάτσου 35, Κόρινθος",
-    width: 1200,
-    height: 676,
-  },
-  {
-    src: `${IMG}/xoros-koureiou-prokopis-korinthos-eksoteriko.webp`,
-    alt: "Ο εξωτερικός χώρος του κουρείου Prokopis στην Κόρινθο",
-    width: 1200,
-    height: 1497,
-  },
-  {
-    src: `${IMG}/xoros-koureiou-prokopis-korinthos-prosopsi.webp`,
-    alt: "Η πρόσοψη και η είσοδος του Prokopis Barbershop στην Κόρινθο",
-    width: 720,
-    height: 540,
-  },
-];
 
 const SITE = "https://prokopis.lovable.app";
 const REVIEW_URL = "https://g.page/r/CSuxeKbN7oEXEBM/review";
