@@ -417,32 +417,19 @@ function Index() {
               πλέον σημείο αναφοράς για την ανδρική φροντίδα στην Κόρινθο.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-3 lg:grid-cols-1">
-            <figure className="surface-card surface-card-hover overflow-hidden">
-              <img
-                src={historyPortrait}
-                alt="Ο Προκόπης Ντερτιλής μπροστά στο Prokopis Barbershop στην Κόρινθο"
-                loading="lazy"
-                decoding="async"
-                width={900}
-                height={1198}
-                sizes="(min-width: 1024px) 33vw, 50vw"
-                className="aspect-[3/4] w-full object-cover"
-              />
-            </figure>
-            <figure className="surface-card surface-card-hover overflow-hidden">
-              <img
-                src={prokopisPortrait}
-                alt="Ο Προκόπης Ντερτιλής στην είσοδο του κουρείου του στην Κολιάτσου 35, Κόρινθος"
-                loading="lazy"
-                decoding="async"
-                width={900}
-                height={1199}
-                sizes="(min-width: 1024px) 33vw, 50vw"
-                className="aspect-[3/4] w-full object-cover"
-              />
-            </figure>
-          </div>
+          <figure className="surface-card surface-card-hover overflow-hidden">
+            <img
+              src={historyPortrait}
+              alt="Ο Προκόπης Ντερτιλής μπροστά στο Prokopis Barbershop στην Κόρινθο"
+              loading="lazy"
+              decoding="async"
+              width={900}
+              height={1198}
+              sizes="(min-width: 1024px) 33vw, 50vw"
+              className="aspect-[3/4] w-full object-cover"
+            />
+          </figure>
+
         </div>
       </section>
 
