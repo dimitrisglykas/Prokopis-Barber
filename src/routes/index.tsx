@@ -433,27 +433,6 @@ function Index() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="shop-space">
-        <h2 id="shop-space" className="section-title text-3xl sm:text-4xl">
-          Ο χώρος του κουρείου
-        </h2>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {SHOP_IMAGES.map((image, index) => (
-            <figure key={image.src} className="surface-card surface-card-hover overflow-hidden">
-              <img
-                src={image.src}
-                alt={image.alt}
-                loading="lazy"
-                decoding="async"
-                width={image.width}
-                height={image.height}
-                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                className={`w-full object-cover transition-transform duration-500 hover:scale-105 ${index === 0 ? "aspect-[4/3]" : "aspect-[3/4]"}`}
-              />
-            </figure>
-          ))}
-        </div>
-      </section>
 
       <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="hours">
         <div className="grid gap-6 lg:grid-cols-2">
