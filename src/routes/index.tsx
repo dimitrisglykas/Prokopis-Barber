@@ -510,10 +510,20 @@ function Index() {
         </div>
       </section>
 
-      <footer className="mt-8 border-t border-border py-10 text-center text-sm text-muted-foreground">
+      <footer className="mt-8 border-t border-border px-5 py-10 text-center text-sm text-muted-foreground">
         <div className="pole-stripes mx-auto mb-6 h-1 w-24 rounded-full" />
         <p>Προκόπης Ντερτιλής Μ. Barber Shop · Κολιάτσου 35, Κόρινθος</p>
         <p className="mt-1">Κουρείο · Ανδρικά κουρέματα &amp; styling</p>
+        <p className="mt-5 text-xs">
+          <a
+            href="https://dimitrisglykas.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-sm transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+          >
+            Designed &amp; Engineered by Dimitris Glykas
+          </a>
+        </p>
       </footer>
     </main>
   );
