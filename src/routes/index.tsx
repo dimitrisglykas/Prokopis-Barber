@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { IntroSplash } from "@/components/intro/IntroSplash";
+import { GOOGLE_REVIEW_COUNT } from "@/lib/site-facts";
 import {
   Phone,
   MapPin,
@@ -166,7 +167,7 @@ export const Route = createFileRoute("/")({
           aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: "4.8",
-            reviewCount: "72",
+            reviewCount: String(GOOGLE_REVIEW_COUNT),
           },
           hasOfferCatalog: {
             "@type": "OfferCatalog",
@@ -317,7 +318,7 @@ function Index() {
                   <Star key={i} className="size-4 fill-primary text-primary" />
                 ))}
               </span>
-              <span className="text-sm text-muted-foreground">72 κριτικές Google</span>
+              <span className="text-sm text-muted-foreground">{GOOGLE_REVIEW_COUNT} κριτικές Google</span>
             </div>
             <a
               href={REVIEW_URL}

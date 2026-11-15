@@ -1,0 +1,1 @@
+export const GOOGLE_REVIEW_COUNT = 86;

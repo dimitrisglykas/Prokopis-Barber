@@ -1,0 +1,2 @@
+- [x] Make the mobile first-load intro lightweight and verify reduced-motion behavior.
+- [x] Update and verify the Google review count of 86.

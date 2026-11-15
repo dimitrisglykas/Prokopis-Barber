@@ -163,6 +163,29 @@
   opacity: 0;
   pointer-events: none;
 }
+.intro-emblem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(78vw, 340px);
+  aspect-ratio: 1;
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+  opacity: 0.3;
+  transform: translate(-50%, -50%);
+}
+.intro-splash[data-scene-ready="true"] .intro-emblem {
+  visibility: hidden;
+}
+.intro-splash[data-lightweight="true"] .intro-signature {
+  animation: none;
+}
+.intro-splash[data-lightweight="true"] .intro-logo {
+  animation: intro-reveal 180ms ease-out both;
+}
+.intro-splash[data-lightweight="true"] .intro-rule {
+  animation-duration: 500ms;
+}
 .intro-signature {
   perspective: 800px;
   animation: intro-reveal 650ms ease-out both;
@@ -189,6 +212,6 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .intro-splash { display: none; }
-  .intro-signature, .intro-logo, .intro-rule { animation: none; }
+  .intro-splash .intro-signature, .intro-splash .intro-logo, .intro-splash .intro-rule { animation: none; }
 }
 

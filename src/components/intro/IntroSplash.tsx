@@ -1,7 +1,7 @@
 import { Component, lazy, Suspense, useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { INTRO_DURATION_MS, INTRO_EXIT_MS, INTRO_SESSION_KEY, shouldShowIntro } from "./intro-policy";
+import { INTRO_DURATION_MS, INTRO_EXIT_MS, INTRO_LIGHTWEIGHT_DURATION_MS, INTRO_SESSION_KEY, shouldShowIntro, shouldUseIntroScene } from "./intro-policy";
 
 const IntroScene = lazy(() => import("./IntroScene"));
 
@@ -20,6 +20,7 @@ export function IntroSplash() {
   const [leaving, setLeaving] = useState(false);
   const [ready, setReady] = useState(false);
   const [gold, setGold] = useState("");
+  const [useScene, setUseScene] = useState(false);
   const exitTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const dismiss = useCallback(() => {
     if (exitTimer.current) return;
@@ -36,10 +37,21 @@ export function IntroSplash() {
     } catch {
       // Storage restrictions must never prevent access to the website.
     }
-    if (!shouldShowIntro(seen, matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
-    setGold(getComputedStyle(document.documentElement).getPropertyValue("--intro-metal").trim());
+    const motion = matchMedia("(prefers-reduced-motion: reduce)");
+    if (!shouldShowIntro(seen, motion.matches)) return;
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    const sceneEnabled = shouldUseIntroScene(matchMedia("(max-width: 767px)").matches, connection?.saveData === true, motion.matches);
+    setUseScene(sceneEnabled);
+    if (sceneEnabled) setGold(getComputedStyle(document.documentElement).getPropertyValue("--intro-metal").trim());
     setVisible(true);
-    const timeout = setTimeout(dismiss, INTRO_DURATION_MS);
+    const timeout = setTimeout(dismiss, sceneEnabled ? INTRO_DURATION_MS : INTRO_LIGHTWEIGHT_DURATION_MS);
+    const handleMotion = () => {
+      if (motion.matches) {
+        setUseScene(false);
+        setVisible(false);
+      }
+    };
+    motion.addEventListener("change", handleMotion);
     const handleKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") dismiss();
     };
@@ -48,6 +60,7 @@ export function IntroSplash() {
       clearTimeout(timeout);
       if (exitTimer.current) clearTimeout(exitTimer.current);
       window.removeEventListener("keydown", handleKey);
+      motion.removeEventListener("change", handleMotion);
     };
   }, [dismiss]);
 
@@ -57,18 +70,20 @@ export function IntroSplash() {
       className="intro-splash fixed inset-0 z-[100] flex items-center justify-center overflow-hidden bg-background"
       data-leaving={leaving}
       data-scene-ready={ready || undefined}
+      data-lightweight={!useScene}
       role="dialog"
       aria-label="Prokopis Barber Shop"
     >
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="intro-emblem" />
         <SceneFallback>
           <Suspense fallback={null}>
-            {gold && <IntroScene gold={gold} onReady={onReady} />}
+            {useScene && gold && !leaving && <IntroScene gold={gold} onReady={onReady} />}
           </Suspense>
         </SceneFallback>
       </div>
       <div className="intro-signature relative flex flex-col items-center px-5 text-center pointer-events-none">
-        <img src="/logo.png" width={192} height={192} alt="Προκόπης Ντερτιλής Barber Shop Logo" className="intro-logo size-40 object-contain sm:size-48" onError={dismiss} />
+        <img src="/logo.png" width={192} height={192} decoding="async" loading="eager" alt="Προκόπης Ντερτιλής Barber Shop Logo" className="intro-logo size-40 object-contain sm:size-48" onError={dismiss} />
         <p className="mt-7 font-display text-3xl text-primary sm:text-4xl">PROKOPIS BARBER SHOP</p>
         <p className="mt-2 text-xs text-muted-foreground">Κόρινθος · Est. 1926</p>
         <span className="intro-rule mt-6 h-px w-24 bg-primary" />

@@ -11,3 +11,5 @@
 
 - Keep the first-load splash session-scoped with a fixed dismissal deadline and reduced-motion bypass so visitors cannot be trapped behind it.
 - Lazy-load the intro's browser-only 3D scene after hydration and unmount it on dismissal so the main site retains SSR and no continuous GPU work.
+- Use a CSS-only intro on compact viewports or data-saving connections; never request the 3D scene there, to avoid mobile GPU and download overhead.
+- Share review totals between visible content and structured data through the site-facts module to prevent inconsistent counts.
