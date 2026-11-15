@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { HaircutAdvisor } from "@/components/haircut-advisor";
+import { barberPrices } from "@/lib/haircut-advisor";
 import {
   Phone,
   MapPin,
@@ -49,15 +51,7 @@ const GALLERY = [
 ];
 
 
-const PRICES = [
-  { title: "Ανδρικό κούρεμα", price: "10,00€" },
-  { title: "Ανδρικό (μόνο μηχανή)", price: "8,00€" },
-  { title: "Παιδικό κούρεμα", price: "8,00€" },
-  { title: "Καθάρισμα αυχένα / φαβορίτες", price: "2,00€" },
-  { title: "Τριμμάρισμα", price: "5,00€" },
-  { title: "Σχήμα γενειάδας / τριμμάρισμα", price: "5,00€" },
-  { title: "Λούσιμο", price: "ΔΩΡΕΑΝ" },
-];
+const PRICES = barberPrices;
 
 
 export const Route = createFileRoute("/")({
@@ -361,6 +355,8 @@ function Index() {
         </ul>
       </section>
 
+      <HaircutAdvisor />
+
       <section className="mx-auto max-w-5xl px-5 py-8" aria-labelledby="gallery">
         <h2 id="gallery" className="section-title text-3xl sm:text-4xl">
           Φωτογραφίες δουλειάς
@@ -511,9 +507,12 @@ function Index() {
       </section>
 
       <footer className="mt-8 border-t border-border py-10 text-center text-sm text-muted-foreground">
-        <div className="pole-stripes mx-auto mb-6 h-1 w-24 rounded-full" />
-        <p>Προκόπης Ντερτιλής Μ. Barber Shop · Κολιάτσου 35, Κόρινθος</p>
-        <p className="mt-1">Κουρείο · Ανδρικά κουρέματα &amp; styling</p>
+        <div className="mx-auto max-w-5xl px-5">
+          <div className="pole-stripes mx-auto mb-6 h-1 w-24 rounded-full" />
+          <p>Προκόπης Ντερτιλής Μ. Barber Shop · Κολιάτσου 35, Κόρινθος</p>
+          <p className="mt-1">Κουρείο · Ανδρικά κουρέματα &amp; styling</p>
+          <a href="https://dimitrisglykas.com" target="_blank" rel="noopener noreferrer" className="mt-5 inline-block text-xs text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">Designed &amp; Engineered by Dimitris Glykas</a>
+        </div>
       </footer>
     </main>
   );
