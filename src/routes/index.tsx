@@ -510,7 +510,7 @@ function Index() {
         </div>
       </section>
 
-      <footer className="mt-8 border-t border-border px-5 py-10 text-center text-sm text-muted-foreground">
+      <footer className="mt-8 border-t border-border px-5 pt-10 pb-24 text-center text-sm text-muted-foreground sm:pb-10">
         <div className="pole-stripes mx-auto mb-6 h-1 w-24 rounded-full" />
         <p>Προκόπης Ντερτιλής Μ. Barber Shop · Κολιάτσου 35, Κόρινθος</p>
         <p className="mt-1">Κουρείο · Ανδρικά κουρέματα &amp; styling</p>
