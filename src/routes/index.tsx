@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { IntroSplash } from "@/components/intro/IntroSplash";
 import {
   Phone,
   MapPin,
@@ -246,6 +247,7 @@ const SERVICES = [
 function Index() {
   return (
     <main className="min-h-screen">
+      <IntroSplash />
       <header className="relative isolate overflow-hidden">
         <img
           src={storefront}
